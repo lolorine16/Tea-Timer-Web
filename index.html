@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tea Timer</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>Tea Timer</h1>
+    </header>
+    
+    <section id="accueil">
+       <h1>Bienvenue dans Tea Timer !</h1>
+       <h2>Vous etes amateur de thé ? Tea Timer est fait pour vous !</h2>
+       <h2>Preparez-vous a un bon moment de detente !</h2>
+
+       <div class="tea">
+        <img src="images/tea4.png" id="teaImage" alt="tea">
+       </div>
+       
+       <h3>Savourez votre thé bien infuser...</h3>
+       <button onclick="afficherSection('menu')" id="startButton">
+          Commencer
+       </button>
+    </section>
+
+    <section id="menu">
+        <h1>Avoir un bon thé ca prend du temps !!</h1>
+        <h2>Choisissez la durée d'infusion de votre thé</h2>
+        <h2>et laissez Tea Timer s'occuper du reste !</h2>
+
+        <div class="tea">
+            <img src="images/tea3.png" id="teaImage" alt="tea">
+        
+        <label for="timer-duration">Durée :</label>
+        <select id="timer-duration">
+            <option value="1">1min</option>
+           <option value="3">3min</option>
+           <option value="5">5min</option>
+           <option value="7">7min</option> 
+        </select><br> 
+        </div>
+
+        <button onclick="afficherSection('timer')">Go !</button>  
+    </section>
+
+    <section id="timer">
+        <h1>Decompte a rebours</h1>
+
+        <div class="animation">
+            <img src="images/tea_s.gif" id="teaAnim" alt="tea">
+        </div>
+
+        <h2>Votre thé infuse...</h2>
+        <h2 id="timer-display">00:00</h2>
+        <button onclick="resetTimer()">Recommencer</button>
+        <button onclick="stopTimer()">Arrêter</button>
+        <button onclick="restartTimer()">Reprendre</button>
+
+        <br><button onclick="afficherSection('fin')">Fin</button>
+    </section>
+
+    <section id="fin">
+
+        <div class="tea">
+            <img src="images/tea5.png" id="teaImage" alt="tea">
+        </div>
+
+        <h1>Le temps est ecoulé !</h1>
+        <h2>Votre thé est prêt !</h2>
+        <h2>Profitez de votre moment de détente !</h2>
+        <p>Merci d'avoir choisi Tea timer, savourez votre thé 
+        et n'hesitez pas a revenir pour une nouvelle infusion !
+        </p>
+        <button onclick="afficherSection('accueil')">Retour</button>
+    </section>
+
+    <footer id="footer">
+        <h6>Tea Timer - 2025 - lolorine16</h6>
+    </footer>
+
+</body>
+
+</html>
