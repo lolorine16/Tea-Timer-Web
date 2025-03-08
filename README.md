@@ -21,7 +21,9 @@ L'interface est inspirée des jeux rétro en pixel art, pour offrir une expérie
 - **LibreSprite** : Croquis et petits dessins en pixel
 
 ## 🌐 Déploiement
-Tea Timer est accessible en ligne gratuitement (Lien à venir après le déploiement).
+Tea Timer est accessible en ligne gratuitement.
+[cliquez ici !](https://teatimerlol.netlify.app/)
+
 
 ## ✨ Contribution
 Toute suggestion est la bienvenue ! Vous pouvez forker le projet et proposer des améliorations.
