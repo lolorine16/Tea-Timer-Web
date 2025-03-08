@@ -7,7 +7,7 @@ header {
 }
 @font-face {
     font-family: 'VCR OSD Mono';
-    src: url('VCR_OSD_Mono.ttf') format('truetype');
+    src: url('fonts/VCR_OSD_Mono.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }

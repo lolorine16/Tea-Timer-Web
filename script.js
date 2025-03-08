@@ -1,18 +1,18 @@
 function afficherSection(id) {
-    // Cache toutes les sections
+    
     document.querySelectorAll("section").forEach(section => {
         section.style.display = "none";
     });
 
-    // Affiche la section demandée
+    
     document.getElementById(id).style.display = "block";
 }
 
-// Afficher la section d'accueil au démarrage
+
 document.addEventListener("DOMContentLoaded", () => {
     afficherSection("accueil");
 });
-// Gerer le minuteur de la section timer
+
 let timer;
 let timeLeft;
 let isPaused = false;
@@ -20,7 +20,7 @@ let isPaused = false;
 function startTimer(duration) {
     clearInterval(timer);
     if (!isPaused) {
-        timeLeft = duration * 60; // Convert minutes to seconds
+        timeLeft = duration * 60; 
     }
     updateTimerDisplay();
     
@@ -58,27 +58,27 @@ function stopTimer() {
 function restartTimer() {
     if (isPaused && timeLeft > 0) {
         isPaused = false;
-        startTimer(timeLeft / 60); // Convert seconds back to minutes
+        startTimer(timeLeft / 60); 
     }
 }
 
 function afficherSection(id) {
-    // Cache toutes les sections
+   
     document.querySelectorAll("section").forEach(section => {
         section.style.display = "none";
     });
 
-    // Affiche la section demandée
+   
     document.getElementById(id).style.display = "block";
 
-    // Start the timer if the 'timer' section is displayed
+    
     if (id === 'timer') {
         const duration = parseInt(document.getElementById('timer-duration').value);
         startTimer(duration);
     }
 }
 
-// Afficher la section d'accueil au démarrage
+
 document.addEventListener("DOMContentLoaded", () => {
     afficherSection("accueil");
 });
