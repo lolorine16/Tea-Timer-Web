@@ -1,110 +1,286 @@
-header {
-    border-bottom: 1px solid #725C3F;
-    border-width: 0.5cap;
-    color: #fff;
-    padding: 10px 0;
-    text-align: center;
-}
-@font-face {
-    font-family: 'VCR OSD Mono';
-    src: url('fonts/VCR_OSD_Mono.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'VCR OSD Mono';
-    background-color: #DDE7CE;
-    margin: 0;
-    padding: 0;
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #f5f1eb 0%, #e8ddd4 100%);
+    min-height: 100vh;
+    color: #5d4e37;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
     text-align: center;
-}
-.animation {
-    width: 100%;
-    height: 100%;
-
-    animation: spin 20s linear infinite;
-    image-rendering: pixelated;
-    image-rendering: crisp-edges;
-}
-#teaAnim {
-    width: 200px;
-    height: 200px;
-    margin: 5px;
+    margin-bottom: 3rem;
 }
 
-.tea {
-    width: 100%;
-    height: 100%;
-    
-    image-rendering: pixelated;
-    image-rendering: crisp-edges;
-}
-#teaImage {
-    width: 200px;
-    height: 200px;
-    margin: 20px;
-}
 h1 {
-    font-size: 36px;
-    margin: 40px;
-    color: #A8AF71;
-}
-h2 {
-    font-size: 24px;
-    margin: 20px;
-    color: #D68B79;
-}
-p, h3{
-    font-size: 30px;
-    margin: 20px;
-    color: #92B8B0;
-}
-label {
-    font-size: 30px;
-    margin: 20px;
-    color: #725C3F;
-}
-#timer-display {
-    font-size: 100px;
-    margin: 20px;
-    color: #A0BDC7;
-}
-#timer-duration {
-    background-color: #DDE7CE;
-    border-radius: 10px;
-    size: 100px;
-    font-family: 'VCR OSD Mono';
-    font-size: 24px;
-    margin: 20px;
-    color: #D68B79;
+    font-size: 3rem;
+    color: #6b5b73;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
-  
-button {
-    background-color: #725C3F;
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    padding: 10px 20px;
-    margin: 10px;
+.subtitle {
+    font-size: 1.2rem;
+    color: #8b7355;
+    font-style: italic;
+}
+
+.tea-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.tea-card {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     cursor: pointer;
-    font-size: 16px;
-    font-family: 'VCR OSD Mono';
-}
-button:hover {
-    background-color: #594B3F;
-    size: 60px;
-}
-  
-#footer {
-    color: #594B3F;
-    padding: 10px 0;
-    text-align: center;
-    font-size: 20px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-  
+.tea-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.tea-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+}
+
+.tea-card:hover::before {
+    left: 100%;
+}
+
+.tea-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #6b5b73;
+    margin-bottom: 0.5rem;
+}
+
+.tea-preview {
+    color: #8b7355;
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+.steeping-time {
+    background: #d4af37;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 0.8rem;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal {
+    background: linear-gradient(145deg, #fff 0%, #f8f6f0 100%);
+    border-radius: 24px;
+    padding: 2.5rem;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.modal-overlay.active .modal {
+    transform: scale(1);
+}
+
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #8b7355;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #5d4e37;
+}
+
+.modal h2 {
+    color: #6b5b73;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.recipe-section {
+    margin-bottom: 1.5rem;
+}
+
+.recipe-section h3 {
+    color: #8b7355;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.recipe-details {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.recipe-details p {
+    margin-bottom: 0.5rem;
+}
+
+/* Timer Styles */
+.timer-section {
+    background: linear-gradient(135deg, #6b5b73 0%, #8b7355 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.timer-display {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 1rem 0;
+    font-family: 'Courier New', monospace;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.timer-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.timer-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.timer-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.timer-btn:active {
+    transform: translateY(0);
+}
+
+.timer-btn.start {
+    background: rgba(76, 175, 80, 0.3);
+    border-color: rgba(76, 175, 80, 0.5);
+}
+
+.timer-btn.pause {
+    background: rgba(255, 152, 0, 0.3);
+    border-color: rgba(255, 152, 0, 0.5);
+}
+
+.timer-btn.reset {
+    background: rgba(244, 67, 54, 0.3);
+    border-color: rgba(244, 67, 54, 0.5);
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: #8b7355;
+    font-style: italic;
+}
+
+.error {
+    text-align: center;
+    padding: 2rem;
+    color: #d32f2f;
+    background: rgba(255, 235, 238, 0.8);
+    border-radius: 12px;
+    margin: 1rem 0;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .tea-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal {
+        padding: 2rem;
+        margin: 1rem;
+    }
+    
+    .timer-display {
+        font-size: 2.5rem;
+    }
+    
+    .timer-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+}

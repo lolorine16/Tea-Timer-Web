@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Earl Grey",
+    "description": "A classic black tea blend infused with bergamot oil, creating a citrusy and floral aroma. Perfect for afternoon tea with a touch of milk and honey.",
+    "temperature": "95°C (203°F)",
+    "steepingTimeSeconds": 240,
+    "ingredients": "Black tea, bergamot oil, cornflower petals"
+  }
+]
+ 
