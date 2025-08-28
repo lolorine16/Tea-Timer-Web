@@ -1,10 +1,98 @@
 [
   {
-    "name": "Earl Grey",
-    "description": "A classic black tea blend infused with bergamot oil, creating a citrusy and floral aroma. Perfect for afternoon tea with a touch of milk and honey.",
-    "temperature": "95°C (203°F)",
+    "name": "ICE TEA",
+    "description": "A refreshing blend of black tea, citrus fruits, and a hint of mint. Perfect for cooling down on a hot day.",
+    "temperature": "5°C (41°F)",
     "steepingTimeSeconds": 240,
-    "ingredients": "Black tea, bergamot oil, cornflower petals"
+    "ingredients": "Black tea, lemon, orange, mint",
+    "image": "./assets/images/IceTea.png",
+    "colors": {
+      "background": "#f0f5dc",
+      "backgroundHover": "#f0f5dc", 
+      "border": "#d87f5c",
+      "borderDashed": "#f0b886",
+      "shadow1": "#f0b886",
+      "shadow2": "#8b3e34",
+      "title": "#8b3e34",
+      "titleShadow": "#f0b886",
+      "description": "#d87f5c",
+      "badgeBackground": "#f0933b",
+      "badgeText": "#f0f5dc",
+      "badgeBorder": "#d87f5c",
+      "badgeShadow": "#8b3e34"
+    }
+  },
+  {
+    "name": "BLUEBERRY BOBA TEA",
+    "description": "A creamy and frothy blend of matcha green tea and steamed milk, lightly sweetened for a delicious treat.",
+    "temperature": "5°C (41°F)",
+    "steepingTimeSeconds": 120,
+    "ingredients": "Matcha powder, milk, sugar",
+    "image": "./assets/images/BlueBerryBoba.png",
+    "colors": {
+      "background": "#f0f5dc",
+      "backgroundHover": "#f0f5dc", 
+      "border": "#8174e8",
+      "borderDashed": "#abcbc4",
+      "shadow1": "#abcbc4",
+      "shadow2": "#20488c",
+      "title": "#20488c",
+      "titleShadow": "#abcbc4",
+      "description": "#8174e8",
+      "badgeBackground": "#8174e8",
+      "badgeText": "#f0f5dc",
+      "badgeBorder": "#20488c",
+      "badgeShadow": "#20488c"
+    }
+  },
+
+  {
+    "name": "HOT GREEN TEA",
+    "description": "A soothing blend of green tea, honey, and lemon. Perfect for a calming moment.",
+    "temperature": "80°C (176°F)",
+    "steepingTimeSeconds": 180,
+    "ingredients": "Green tea, honey, lemon",
+    "image": "./assets/images/HoTea.png",
+    "colors": {
+      "background": "#f0f5dc",
+      "backgroundHover": "#f0f5dc", 
+      "border": "#d87f5c",
+      "borderDashed": "#f0b886",
+      "shadow1": "#f0b886",
+      "shadow2": "#8b3e34",
+      "title": "#8b3e34",
+      "titleShadow": "#f0b886",
+      "description": "#d87f5c",
+      "badgeBackground": "#f0933b",
+      "badgeText": "#f0f5dc",
+      "badgeBorder": "#d87f5c",
+      "badgeShadow": "#8b3e34"
+    }
+  },
+
+
+  {
+    "name": "ICE MATCHA LATTE",
+    "description": "A creamy and frothy blend of matcha green tea and steamed milk, lightly sweetened for a delicious treat.",
+    "temperature": "5°C (41°F)",
+    "steepingTimeSeconds": 120,
+    "ingredients": "Matcha powder, milk, sugar",
+    "image": "./assets/images/Matcha.png",
+    "colors": {
+      "background": "#f0f5dc",
+      "backgroundHover": "#f0f5dc", 
+      "border": "#89ab3e",
+      "borderDashed": "#abcbc4",
+      "shadow1": "#abcbc4",
+      "shadow2": "#306645",
+      "title": "#306645",
+      "titleShadow": "#abcbc4",
+      "description": "#89ab3e",
+      "badgeBackground": "#89ab3e",
+      "badgeText": "#f0f5dc",
+      "badgeBorder": "#306645",
+      "badgeShadow": "#306645"
+    }
   }
 ]
  

@@ -1,3 +1,37 @@
+@font-face {
+    font-family: 'VCR OSD Mono';
+    src: url('./assets/fonts/VCR_OSD_Mono.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+:root {
+    --tea-timer: #A8AF71;
+    /* Noir et gris-bleutés */
+    --noir-bleute: #180c10;
+    --gris-bleu-fonce: #304249;
+    --gris-bleu: #798890;
+    --gris-bleu-clair: #abcbc4;
+    
+    /* Bleus et violets */
+    --bleu-vif: #43abc7;
+    --bleu-fonce: #20488c;
+    --violet: #8174e8;
+    --rose-mauve: #e7aac7;
+    
+    /* Crèmes et oranges */
+    --creme: #f0f5dc;
+    --creme-clair: #ffeede;
+    --orange-clair: #f0b886;
+    --orange-terre: #d87f5c;
+    --brique: #8b3e34;
+    
+    /* Couleurs vives */
+    --orange-vif: #f0933b;
+    --jaune: #f1cc46;
+    --vert-pomme: #89ab3e;
+    --vert-sapin: #306645;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,8 +39,8 @@
 }
 
 body {
-    font-family: 'Georgia', serif;
-    background: linear-gradient(135deg, #f5f1eb 0%, #e8ddd4 100%);
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    background: linear-gradient(135deg, var(--creme) 0%, var(--creme-clair) 100%);
     min-height: 100vh;
     color: #5d4e37;
     line-height: 1.6;
@@ -25,9 +59,10 @@ header {
 
 h1 {
     font-size: 3rem;
-    color: #6b5b73;
+    color: var(--tea-timer);
     margin-bottom: 0.5rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
 }
 
 .subtitle {
@@ -44,60 +79,90 @@ h1 {
 }
 
 .tea-card {
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 16px;
+    background: var(--card-bg, var(--creme));
+    border: 3px solid var(--card-border, var(--orange-terre));
     padding: 1.5rem;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        4px 4px 0px var(--card-shadow1, var(--orange-clair)),
+        8px 8px 0px var(--card-shadow2, var(--brique));
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.1s ease;
     position: relative;
-    overflow: hidden;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
 }
 
 .tea-card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    transition: left 0.6s ease;
+    top: 3px;
+    left: 3px;
+    right: 3px;
+    bottom: 3px;
+    border: 2px dashed var(--card-border-dashed, var(--orange-clair));
+    pointer-events: none;
 }
 
 .tea-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+    transform: translate(-2px, -2px);
+    box-shadow: 
+        6px 6px 0px var(--card-shadow1, var(--orange-clair)),
+        10px 10px 0px var(--card-shadow2, var(--brique));
+    background: var(--card-bg-hover, var(--creme-clair));
 }
 
-.tea-card:hover::before {
-    left: 100%;
+.tea-card:active {
+    transform: translate(2px, 2px);
+    box-shadow: 
+        2px 2px 0px var(--card-shadow1, var(--orange-clair)),
+        4px 4px 0px var(--card-shadow2, var(--brique));
+}
+
+.tea-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .tea-name {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #6b5b73;
+    color: var(--card-title, var(--brique));
     margin-bottom: 0.5rem;
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px var(--card-title-shadow, var(--orange-clair));
 }
 
 .tea-preview {
-    color: #8b7355;
-    font-size: 0.95rem;
-    opacity: 0.8;
+    color: var(--card-description, var(--orange-terre));
+    font-size: 0.9rem;
+    opacity: 1;
+    line-height: 1.4;
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
 }
 
 .steeping-time {
-    background: #d4af37;
-    color: white;
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
+    background: var(--card-badge-bg, var(--orange-vif));
+    color: var(--card-badge-text, var(--creme));
+    padding: 0.4rem 1rem;
+    border: 2px solid var(--card-badge-border, var(--orange-terre));
     font-size: 0.85rem;
     font-weight: bold;
     display: inline-block;
     margin-top: 0.8rem;
+    box-shadow: 2px 2px 0px var(--card-badge-shadow, var(--brique));
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* Modal Styles */
@@ -160,6 +225,7 @@ h1 {
     color: #6b5b73;
     font-size: 2rem;
     margin-bottom: 1rem;
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
 }
 
 .recipe-section {
@@ -197,7 +263,7 @@ h1 {
     font-size: 3rem;
     font-weight: bold;
     margin: 1rem 0;
-    font-family: 'Courier New', monospace;
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 

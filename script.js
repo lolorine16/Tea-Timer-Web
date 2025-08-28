@@ -34,7 +34,25 @@ function displayTeas() {
         teaCard.className = 'tea-card';
         teaCard.onclick = () => openModal(tea);
         
+        // Apply custom colors if available
+        if (tea.colors) {
+            teaCard.style.setProperty('--card-bg', tea.colors.background);
+            teaCard.style.setProperty('--card-bg-hover', tea.colors.backgroundHover);
+            teaCard.style.setProperty('--card-border', tea.colors.border);
+            teaCard.style.setProperty('--card-border-dashed', tea.colors.borderDashed);
+            teaCard.style.setProperty('--card-shadow1', tea.colors.shadow1);
+            teaCard.style.setProperty('--card-shadow2', tea.colors.shadow2);
+            teaCard.style.setProperty('--card-title', tea.colors.title);
+            teaCard.style.setProperty('--card-title-shadow', tea.colors.titleShadow);
+            teaCard.style.setProperty('--card-description', tea.colors.description);
+            teaCard.style.setProperty('--card-badge-bg', tea.colors.badgeBackground);
+            teaCard.style.setProperty('--card-badge-text', tea.colors.badgeText);
+            teaCard.style.setProperty('--card-badge-border', tea.colors.badgeBorder);
+            teaCard.style.setProperty('--card-badge-shadow', tea.colors.badgeShadow);
+        }
+        
         teaCard.innerHTML = `
+            ${tea.image ? `<img src="${tea.image}" alt="${tea.name}" class="tea-image">` : ''}
             <h3 class="tea-name">${tea.name}</h3>
             <p class="tea-preview">${tea.description.substring(0, 100)}...</p>
             <span class="steeping-time">${formatTime(tea.steepingTimeSeconds)}</span>
