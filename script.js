@@ -1,14 +1,31 @@
 
 // Global variables
 let teasData = [];
+let colorPalettes = {};
 let currentTimer = null;
 let timerInterval = null;
 let timeRemaining = 0;
 let isPaused = false;
 
+// Load color palettes from JSON file
+async function loadColorPalettes() {
+    try {
+        const response = await fetch('color-palettes.json');
+        if (!response.ok) {
+            throw new Error('Failed to load color palettes');
+        }
+        colorPalettes = await response.json();
+    } catch (error) {
+        console.error('Error loading color palettes:', error);
+    }
+}
+
 // Load tea data from JSON file
 async function loadTeaData() {
     try {
+        // Load both tea data and color palettes
+        await loadColorPalettes();
+        
         const response = await fetch('teas.json');
         if (!response.ok) {
             throw new Error('Failed to load tea data');
@@ -34,8 +51,25 @@ function displayTeas() {
         teaCard.className = 'tea-card';
         teaCard.onclick = () => openModal(tea);
         
-        // Apply custom colors if available
-        if (tea.colors) {
+        // Apply colors from palette reference
+        if (tea.colorPalette && colorPalettes[tea.colorPalette]) {
+            const colors = colorPalettes[tea.colorPalette];
+            teaCard.style.setProperty('--card-bg', colors.background);
+            teaCard.style.setProperty('--card-bg-hover', colors.backgroundHover);
+            teaCard.style.setProperty('--card-border', colors.border);
+            teaCard.style.setProperty('--card-border-dashed', colors.borderDashed);
+            teaCard.style.setProperty('--card-shadow1', colors.shadow1);
+            teaCard.style.setProperty('--card-shadow2', colors.shadow2);
+            teaCard.style.setProperty('--card-title', colors.title);
+            teaCard.style.setProperty('--card-title-shadow', colors.titleShadow);
+            teaCard.style.setProperty('--card-description', colors.description);
+            teaCard.style.setProperty('--card-badge-bg', colors.badgeBackground);
+            teaCard.style.setProperty('--card-badge-text', colors.badgeText);
+            teaCard.style.setProperty('--card-badge-border', colors.badgeBorder);
+            teaCard.style.setProperty('--card-badge-shadow', colors.badgeShadow);
+        }
+        // Fallback: apply custom colors if available (legacy support)
+        else if (tea.colors) {
             teaCard.style.setProperty('--card-bg', tea.colors.background);
             teaCard.style.setProperty('--card-bg-hover', tea.colors.backgroundHover);
             teaCard.style.setProperty('--card-border', tea.colors.border);
