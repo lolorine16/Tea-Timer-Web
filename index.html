@@ -10,8 +10,15 @@
     <div class="container">
         <header>
             <h1>Tea Timer</h1>
-            <p class="subtitle">Discover the perfect brew for every moment</p>
+            <p class="subtitle">Preparez-vous a un bon moment de detente</p>
         </header>
+
+        <!-- Separator Bar -->
+        <div class="header-separator">
+            <div class="separator-line"></div>
+            <div class="separator-ornament">◆</div>
+            <div class="separator-line"></div>
+        </div>
 
         <main>
             <div id="loading" class="loading">
@@ -20,6 +27,19 @@
             
             <div id="error" class="error" style="display: none;">
                 <p>Sorry, we couldn't load the tea collection. Please make sure the teas.json file is available.</p>
+            </div>
+            
+            <!-- Welcome Section with Lana -->
+            <div id="welcome-section" class="welcome-section" style="display: none;">
+                <div class="welcome-frame">
+                    <div class="lana-container">
+                        <img src="./assets/gifs/salute-lana.gif" alt="Lana salue" class="lana-gif">
+                    </div>
+                    <div class="message-container">
+                        <p id="typing-message" class="typing-message"></p>
+                        <span class="cursor">|</span>
+                    </div>
+                </div>
             </div>
             
             <!-- Recipe Images Carousel -->
@@ -41,6 +61,19 @@
                 <!-- Tea cards will be inserted here -->
             </div>
         </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-separator">
+                <div class="footer-line"></div>
+                <div class="footer-ornament">☕</div>
+                <div class="footer-line"></div>
+            </div>
+            <div class="footer-content">
+                <p class="footer-text">Tea Timer © 2025</p>
+                <p class="footer-subtitle">Savourez chaque moment</p>
+            </div>
+        </footer>
     </div>
 
     <!-- Modal -->

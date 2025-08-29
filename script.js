@@ -6,37 +6,121 @@ let currentTimer = null;
 let timerInterval = null;
 let timeRemaining = 0;
 let isPaused = false;
+let appInitialized = false;
+let welcomeShown = false;
+
+// Simple test function
+function testJsonLoad() {
+    console.log('=== USING STATIC TEST DATA ===');
+    
+    // Test avec des données statiques d'abord
+    teasData = [
+        {
+            "name": "ICE TEA TEST",
+            "description": "Un mélange rafraîchissant de thé noir, d'agrumes et d'une pointe de menthe.",
+            "temperature": "Servir froid",
+            "steepingTimeSeconds": 240,
+            "ingredients": "Thé noir, citron, orange, menthe",
+            "image": "./assets/images/IceTea.png",
+            "colorPalette": "orange-palette"
+        }
+    ];
+    
+    colorPalettes = {
+        "orange-palette": {
+            "background": "#f0f5dc",
+            "backgroundHover": "#f0f5dc", 
+            "border": "#d87f5c",
+            "borderDashed": "#f0b886",
+            "shadow1": "#f0b886",
+            "shadow2": "#8b3e34",
+            "title": "#8b3e34",
+            "titleShadow": "#f0b886",
+            "description": "#d87f5c",
+            "badgeBackground": "#f0933b",
+            "badgeText": "#f0f5dc",
+            "badgeBorder": "#d87f5c",
+            "badgeShadow": "#8b3e34"
+        }
+    };
+    
+    console.log('Using static data for now...');
+    
+    // Hide loading and display welcome section first
+    document.getElementById('loading').style.display = 'none';
+    displayWelcomeSection();
+}
 
 // Load color palettes from JSON file
 async function loadColorPalettes() {
+    console.log('Loading color palettes...');
     try {
-        const response = await fetch('color-palettes.json');
+        const response = await fetch('./color-palettes.json');
+        console.log('Color palettes response:', response.status);
         if (!response.ok) {
             throw new Error('Failed to load color palettes');
         }
         colorPalettes = await response.json();
+        console.log('Color palettes loaded successfully');
     } catch (error) {
         console.error('Error loading color palettes:', error);
+        // Utiliser des données par défaut
+        colorPalettes = {
+            "orange-palette": {
+                "background": "#f0f5dc",
+                "backgroundHover": "#f0f5dc", 
+                "border": "#d87f5c",
+                "borderDashed": "#f0b886",
+                "shadow1": "#f0b886",
+                "shadow2": "#8b3e34",
+                "title": "#8b3e34",
+                "titleShadow": "#f0b886",
+                "description": "#d87f5c",
+                "badgeBackground": "#f0933b",
+                "badgeText": "#f0f5dc",
+                "badgeBorder": "#d87f5c",
+                "badgeShadow": "#8b3e34"
+            }
+        };
     }
 }
 
 // Load tea data from JSON file
 async function loadTeaData() {
+    console.log('Starting to load tea data...');
+    console.log('Current URL:', window.location.href);
+    
     try {
         // Load both tea data and color palettes
+        console.log('Loading color palettes...');
         await loadColorPalettes();
         
-        const response = await fetch('teas.json');
+        console.log('Fetching teas.json...');
+        const response = await fetch('./teas.json');
+        console.log('Response status:', response.status, response.statusText);
+        
         if (!response.ok) {
-            throw new Error('Failed to load tea data');
+            throw new Error(`Failed to load tea data: ${response.status} ${response.statusText}`);
         }
-        teasData = await response.json();
-        displayRecipeImages();
-        displayTeas();
+        
+        console.log('Parsing JSON...');
+        const text = await response.text();
+        console.log('Raw response text length:', text.length);
+        
+        teasData = JSON.parse(text);
+        console.log('Tea data loaded successfully:', teasData.length, 'teas found');
+        
+        // Hide loading and display welcome section first
+        document.getElementById('loading').style.display = 'none';
+        displayWelcomeSection();
+        
     } catch (error) {
         console.error('Error loading tea data:', error);
-        document.getElementById('loading').style.display = 'none';
-        document.getElementById('error').style.display = 'block';
+        console.error('Error details:', error.message);
+        console.log('Falling back to static data...');
+        
+        // Utiliser testJsonLoad comme fallback
+        testJsonLoad();
     }
 }
 
@@ -52,7 +136,6 @@ function displayRecipeImages() {
         'milk.png',
         'strawberry.png',
         'sugar.png',
-        'tea.png',
         'tea0.png'
     ];
     
@@ -61,7 +144,10 @@ function displayRecipeImages() {
     
     carouselTrack.innerHTML = '';
     
-    recipeImages.forEach((imageName, index) => {
+    // Créer deux copies des images pour une boucle infinie
+    const allImages = [...recipeImages, ...recipeImages];
+    
+    allImages.forEach((imageName, index) => {
         const img = document.createElement('img');
         img.src = `./assets/images/recipes/${imageName}`;
         img.alt = `Recipe ${imageName.replace('.png', '')}`;
@@ -280,10 +366,67 @@ function formatTime(seconds) {
     return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
 }
 
+// Typing effect function
+function typeMessage(text, elementId, speed = 50) {
+    const element = document.getElementById(elementId);
+    element.textContent = '';
+    let i = 0;
+    
+    function typeChar() {
+        if (i < text.length) {
+            element.textContent += text.charAt(i);
+            i++;
+            setTimeout(typeChar, speed);
+        }
+    }
+    
+    typeChar();
+}
+
+// Display welcome section with typing effect
+function displayWelcomeSection() {
+    if (welcomeShown) {
+        return; // Éviter les appels multiples
+    }
+    
+    welcomeShown = true;
+    const welcomeSection = document.getElementById('welcome-section');
+    welcomeSection.style.display = 'block';
+    
+    // Start typing effect after a short delay
+    setTimeout(() => {
+        const message = "Bienvenue ! Moi c'est Laureen, amatrice de thé ! Merci de visiter Tea Timer, passez un bon moment de détente.";
+        typeMessage(message, 'typing-message', 80);
+        
+        // Afficher les autres sections après que le message soit terminé
+        setTimeout(() => {
+            showMainContent();
+        }, message.length * 80 + 1000); // Durée du message + 1 seconde
+        
+    }, 500);
+}
+
+// Afficher le contenu principal (carrousel et cartes)
+function showMainContent() {
+    if (appInitialized) {
+        return; // Éviter les appels multiples
+    }
+    
+    appInitialized = true;
+    console.log('Showing main content...');
+    
+    displayRecipeImages();
+    displayTeas();
+}
+
 // Event Listeners
 
-// Close modal when clicking outside
+// Initialize app
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize the application
+    loadTeaData();
+    
+    // Set up modal event listeners
     const modalOverlay = document.getElementById('modal-overlay');
     
     modalOverlay.addEventListener('click', function(e) {
@@ -298,7 +441,4 @@ document.addEventListener('DOMContentLoaded', function() {
             closeModal();
         }
     });
-    
-    // Initialize app
-    loadTeaData();
 });
