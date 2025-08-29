@@ -1,65 +1,65 @@
 [
   {
     "name": "ICE TEA",
-    "description": "A refreshing blend of black tea, citrus fruits, and a hint of mint. Perfect for cooling down on a hot day.",
-    "temperature": "5°C (41°F)",
+    "description": "Un mélange rafraîchissant de thé noir, d'agrumes et d'une pointe de menthe. Parfait pour se rafraîchir lors d'une journée chaude.",
+    "temperature": "Servir froid",
     "steepingTimeSeconds": 240,
-    "ingredients": "Black tea, lemon, orange, mint",
+    "ingredients": "Thé noir, citron, orange, menthe",
     "image": "./assets/images/IceTea.png",
     "colorPalette": "orange-palette"
   },
   {
-    "name": "MATCHA BOBA TEA",
-    "description": "A creamy and frothy blend of matcha green tea and steamed milk, lightly sweetened for a delicious treat.",
-    "temperature": "5°C (41°F)",
-    "steepingTimeSeconds": 120,
-    "ingredients": "Matcha powder, milk, sugar",
+    "name": "STRAWBERRY MATCHA",
+    "description": "Un délicieux bubble tea au matcha avec des perles de tapioca. Onctueux et légèrement sucré avec une belle couleur verte.",
+    "temperature": "Servir froid",
+    "steepingTimeSeconds": 180,
+    "ingredients": "Poudre de matcha, lait, sucre, perles de tapioca, fraises",
     "image": "./assets/images/StrawberryMatcha.png",
     "colorPalette": "pink-palette"
   },
-    {
+  {
     "name": "MATCHA BOBA TEA",
-    "description": "A creamy and frothy blend of matcha green tea and steamed milk, lightly sweetened for a delicious treat.",
-    "temperature": "5°C (41°F)",
-    "steepingTimeSeconds": 120,
-    "ingredients": "Matcha powder, milk, sugar",
+    "description": "Un authentique bubble tea au matcha avec des perles de tapioca moelleuses. Saveur riche de thé vert japonais.",
+    "temperature": "Servir froid",
+    "steepingTimeSeconds": 180,
+    "ingredients": "Poudre de matcha, lait, sucre, perles de tapioca",
     "image": "./assets/images/MatchaBoba.png",
     "colorPalette": "green-palette"
   },
   {
     "name": "BOBA TEA",
-    "description": "A creamy and frothy blend of matcha green tea and steamed milk, lightly sweetened for a delicious treat.",
-    "temperature": "5°C (41°F)",
-    "steepingTimeSeconds": 120,
-    "ingredients": "Matcha powder, milk, sugar",
+    "description": "Le classique bubble tea aux saveurs variées avec des perles de tapioca noires. Boisson tendance et gourmande.",
+    "temperature": "Servir froid",
+    "steepingTimeSeconds": 150,
+    "ingredients": "Thé noir, lait, sucre, perles de tapioca noires",
     "image": "./assets/images/Boba.png",
     "colorPalette": "brown-palette"
   },
   {
     "name": "BLUEBERRY BOBA TEA",
-    "description": "A creamy and frothy blend of matcha green tea and steamed milk, lightly sweetened for a delicious treat.",
-    "temperature": "5°C (41°F)",
-    "steepingTimeSeconds": 120,
-    "ingredients": "Matcha powder, milk, sugar",
+    "description": "Un bubble tea aux myrtilles avec des perles de tapioca. Saveur fruitée et rafraîchissante aux notes de baies.",
+    "temperature": "Servir froid",
+    "steepingTimeSeconds": 150,
+    "ingredients": "Thé noir, myrtilles, lait, sucre, perles de tapioca",
     "image": "./assets/images/BlueBerryBoba.png",
     "colorPalette": "purple-palette"
   },
   {
     "name": "HOT GREEN TEA",
-    "description": "A soothing blend of green tea, honey, and lemon. Perfect for a calming moment.",
-    "temperature": "80°C (176°F)",
+    "description": "Un mélange apaisant de thé vert, miel et citron. Parfait pour un moment de détente et de bien-être.",
+    "temperature": "70°C (158°F)",
     "steepingTimeSeconds": 180,
-    "ingredients": "Green tea, honey, lemon",
+    "ingredients": "Thé vert, miel, citron",
     "image": "./assets/images/HoTea.png",
     "colorPalette": "orange-palette"
   },
   {
     "name": "ICE MATCHA LATTE",
-    "description": "A creamy and frothy blend of matcha green tea and steamed milk, lightly sweetened for a delicious treat.",
-    "temperature": "5°C (41°F)",
-    "steepingTimeSeconds": 120,
-    "ingredients": "Matcha powder, milk, sugar",
-    "image": "./assets/images/Matcha.png",
+    "description": "Un latte glacé au matcha crémeux et mousseux, légèrement sucré. La fraîcheur du matcha japonais dans une boisson lactée.",
+    "temperature": "Servir froid",
+    "steepingTimeSeconds": 30,
+    "ingredients": "Poudre de matcha, lait, sucre, glace",
+    "image": "./assets/images/Matcha1.png",
     "colorPalette": "green-palette"
   }
 ]

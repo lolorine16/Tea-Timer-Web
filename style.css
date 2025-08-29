@@ -71,6 +71,138 @@ h1 {
     font-style: italic;
 }
 
+/* Recipe Carousel Styles */
+.recipes-carousel {
+    margin-bottom: 3rem;
+    background: var(--creme);
+    border: 4px solid var(--orange-terre);
+    padding: 2rem;
+    box-shadow: 
+        6px 6px 0px var(--orange-clair),
+        12px 12px 0px var(--brique);
+    position: relative;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+.recipes-carousel::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 2px dashed var(--orange-clair);
+    pointer-events: none;
+}
+
+.carousel-title {
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    font-size: 1.5rem;
+    color: var(--brique);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px var(--orange-clair);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.carousel-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    border: 2px solid var(--orange-terre);
+    background: var(--creme);
+    padding: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--orange-terre) var(--creme-clair);
+}
+
+.carousel-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.carousel-container::-webkit-scrollbar-track {
+    background: var(--creme);
+}
+
+.carousel-container::-webkit-scrollbar-thumb {
+    background: var(--orange-terre);
+    border-radius: 0;
+}
+
+.carousel-container::-webkit-scrollbar-thumb:hover {
+    background: var(--brique);
+}
+
+.carousel-track {
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem;
+    min-width: min-content;
+}
+
+.recipe-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 3px solid var(--orange-terre);
+    box-shadow: 3px 3px 0px var(--brique);
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    transition: all 0.1s ease;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.recipe-image:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--brique);
+    border-color: var(--brique);
+}
+
+.recipe-image:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px var(--brique);
+}
+
+/* Gallery Label Styles */
+.gallery-label {
+    margin: 3rem 0 2rem 0;
+    text-align: center;
+}
+
+.section-title {
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    font-size: 2rem;
+    color: var(--brique);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 3px 3px 0px var(--orange-clair);
+    margin: 0;
+    position: relative;
+}
+
+.section-title::before,
+.section-title::after {
+    content: '◆◆◆';
+    color: var(--orange-terre);
+    font-size: 1rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-shadow: 1px 1px 0px var(--brique);
+}
+
+.section-title::before {
+    left: -80px;
+}
+
+.section-title::after {
+    right: -80px;
+}
+
 .tea-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -172,14 +304,13 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.8);
     display: none;
     justify-content: center;
     align-items: center;
     z-index: 1000;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.2s ease;
 }
 
 .modal-overlay.active {
@@ -188,17 +319,33 @@ h1 {
 }
 
 .modal {
-    background: linear-gradient(145deg, #fff 0%, #f8f6f0 100%);
-    border-radius: 24px;
+    background: var(--modal-bg, var(--creme));
+    border: 4px solid var(--modal-border, var(--orange-terre));
     padding: 2.5rem;
     max-width: 600px;
     width: 90%;
     max-height: 80vh;
     overflow-y: auto;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 
+        6px 6px 0px var(--modal-shadow1, var(--orange-clair)),
+        12px 12px 0px var(--modal-shadow2, var(--brique));
     transform: scale(0.8);
-    transition: transform 0.3s ease;
+    transition: all 0.2s ease;
     position: relative;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+.modal::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 2px dashed var(--modal-border-dashed, var(--orange-clair));
+    pointer-events: none;
 }
 
 .modal-overlay.active .modal {
@@ -209,23 +356,40 @@ h1 {
     position: absolute;
     top: 1rem;
     right: 1.5rem;
-    background: none;
-    border: none;
-    font-size: 2rem;
+    background: var(--modal-close-bg, var(--orange-terre));
+    border: 2px solid var(--modal-close-border, var(--brique));
+    font-size: 1.5rem;
     cursor: pointer;
-    color: #8b7355;
-    transition: color 0.3s ease;
+    color: var(--modal-close-text, var(--creme));
+    transition: all 0.1s ease;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    font-weight: bold;
 }
 
 .close-btn:hover {
-    color: #5d4e37;
+    background: var(--modal-close-hover, var(--brique));
+    transform: translate(-1px, -1px);
+    box-shadow: 2px 2px 0px var(--modal-shadow1, var(--orange-clair));
+}
+
+.close-btn:active {
+    transform: translate(1px, 1px);
+    box-shadow: none;
 }
 
 .modal h2 {
-    color: #6b5b73;
+    color: var(--modal-title, var(--brique));
     font-size: 2rem;
     margin-bottom: 1rem;
     font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px var(--modal-title-shadow, var(--orange-clair));
 }
 
 .recipe-section {
@@ -233,82 +397,112 @@ h1 {
 }
 
 .recipe-section h3 {
-    color: #8b7355;
+    color: var(--modal-subtitle, var(--orange-terre));
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .recipe-details {
-    background: rgba(255, 255, 255, 0.6);
+    background: var(--modal-details-bg, var(--creme-clair));
+    border: 2px solid var(--modal-details-border, var(--orange-clair));
     padding: 1rem;
-    border-radius: 12px;
     margin-bottom: 1rem;
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    color: var(--modal-details-text, var(--brique));
 }
 
 .recipe-details p {
     margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.recipe-details strong {
+    color: var(--modal-details-bold, var(--orange-terre));
 }
 
 /* Timer Styles */
 .timer-section {
-    background: linear-gradient(135deg, #6b5b73 0%, #8b7355 100%);
-    color: white;
-    padding: 2rem;
-    border-radius: 16px;
+    background: var(--modal-timer-bg, var(--orange-terre));
+    border: 3px solid var(--modal-timer-border, var(--brique));
+    color: var(--modal-timer-text, var(--creme));
+    padding: 1.5rem;
     text-align: center;
     margin-top: 1.5rem;
+    box-shadow: 3px 3px 0px var(--modal-timer-shadow, var(--brique));
+}
+
+.timer-section h3 {
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.8rem;
+    font-size: 0.8rem;
 }
 
 .timer-display {
-    font-size: 3rem;
-    font-weight: bold;
-    margin: 1rem 0;
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 0.8rem 0;
     font-family: 'VCR OSD Mono', 'Courier New', monospace;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    text-shadow: 2px 2px 0px var(--modal-timer-display-shadow, var(--brique));
+    background: var(--modal-timer-display-bg, var(--creme));
+    color: var(--modal-timer-display-text, var(--brique));
+    padding: 0.4rem 0.8rem;
+    border: 2px solid var(--modal-timer-display-border, var(--brique));
+    display: inline-block;
 }
 
 .timer-controls {
     display: flex;
-    gap: 1rem;
+    gap: 0.8rem;
     justify-content: center;
     flex-wrap: wrap;
 }
 
 .timer-btn {
-    background: rgba(255, 255, 255, 0.2);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    color: white;
-    padding: 0.8rem 1.5rem;
-    border-radius: 25px;
+    background: var(--modal-btn-bg, var(--creme));
+    border: 2px solid var(--modal-btn-border, var(--brique));
+    color: var(--modal-btn-text, var(--brique));
+    padding: 0.6rem 1rem;
     cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 1rem;
+    transition: all 0.1s ease;
+    font-size: 0.9rem;
     font-weight: bold;
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .timer-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-    border-color: rgba(255, 255, 255, 0.5);
-    transform: translateY(-2px);
+    background: var(--modal-btn-hover, var(--orange-clair));
+    transform: translate(-1px, -1px);
+    box-shadow: 2px 2px 0px var(--modal-btn-shadow, var(--brique));
 }
 
 .timer-btn:active {
-    transform: translateY(0);
+    transform: translate(1px, 1px);
+    box-shadow: none;
 }
 
 .timer-btn.start {
-    background: rgba(76, 175, 80, 0.3);
-    border-color: rgba(76, 175, 80, 0.5);
+    background: var(--modal-btn-start, #4CAF50);
+    border-color: var(--modal-btn-start-border, #388E3C);
+    color: var(--creme);
 }
 
 .timer-btn.pause {
-    background: rgba(255, 152, 0, 0.3);
-    border-color: rgba(255, 152, 0, 0.5);
+    background: var(--modal-btn-pause, #FF9800);
+    border-color: var(--modal-btn-pause-border, #F57C00);
+    color: var(--creme);
 }
 
 .timer-btn.reset {
-    background: rgba(244, 67, 54, 0.3);
-    border-color: rgba(244, 67, 54, 0.5);
+    background: var(--modal-btn-reset, #F44336);
+    border-color: var(--modal-btn-reset-border, #D32F2F);
+    color: var(--creme);
 }
 
 .loading {

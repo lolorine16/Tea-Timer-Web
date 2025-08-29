@@ -31,12 +31,50 @@ async function loadTeaData() {
             throw new Error('Failed to load tea data');
         }
         teasData = await response.json();
+        displayRecipeImages();
         displayTeas();
     } catch (error) {
         console.error('Error loading tea data:', error);
         document.getElementById('loading').style.display = 'none';
         document.getElementById('error').style.display = 'block';
     }
+}
+
+// Display recipe images carousel
+function displayRecipeImages() {
+    const recipeImages = [
+        'blueberry.png',
+        'boba.png', 
+        'honey.png',
+        'ice.png',
+        'lemon.png',
+        'macha.png',
+        'milk.png',
+        'strawberry.png',
+        'sugar.png',
+        'tea.png',
+        'tea0.png'
+    ];
+    
+    const carouselTrack = document.getElementById('carousel-track');
+    const recipesCarousel = document.getElementById('recipes-carousel');
+    
+    carouselTrack.innerHTML = '';
+    
+    recipeImages.forEach((imageName, index) => {
+        const img = document.createElement('img');
+        img.src = `./assets/images/recipes/${imageName}`;
+        img.alt = `Recipe ${imageName.replace('.png', '')}`;
+        img.className = 'recipe-image';
+        img.onclick = () => {
+            // Optional: Add click functionality here
+            console.log(`Clicked on ${imageName}`);
+        };
+        
+        carouselTrack.appendChild(img);
+    });
+    
+    recipesCarousel.style.display = 'block';
 }
 
 // Display tea cards
@@ -51,7 +89,7 @@ function displayTeas() {
         teaCard.className = 'tea-card';
         teaCard.onclick = () => openModal(tea);
         
-        // Apply colors from palette reference
+        // Apply colors from palette reference (attribution de chaque couleur depuis color-palettes.json)
         if (tea.colorPalette && colorPalettes[tea.colorPalette]) {
             const colors = colorPalettes[tea.colorPalette];
             teaCard.style.setProperty('--card-bg', colors.background);
@@ -68,7 +106,7 @@ function displayTeas() {
             teaCard.style.setProperty('--card-badge-border', colors.badgeBorder);
             teaCard.style.setProperty('--card-badge-shadow', colors.badgeShadow);
         }
-        // Fallback: apply custom colors if available (legacy support)
+        // Fallback: apply custom colors if available (legacy support) (couleur propre a chaque the)
         else if (tea.colors) {
             teaCard.style.setProperty('--card-bg', tea.colors.background);
             teaCard.style.setProperty('--card-bg-hover', tea.colors.backgroundHover);
@@ -96,13 +134,49 @@ function displayTeas() {
     });
     
     loading.style.display = 'none';
+    document.getElementById('gallery-label').style.display = 'block';
     teaGrid.style.display = 'grid';
 }
 
-// Open modal with tea details
+// Open modal with tea details (popup du the pour voir les details)
 function openModal(tea) {
     const modalOverlay = document.getElementById('modal-overlay');
     const modalContent = document.getElementById('modal-content');
+    const modal = modalOverlay.querySelector('.modal');
+    
+    // Apply colors from palette reference to modal (Ajouter des couleurs au popup)
+    if (tea.colorPalette && colorPalettes[tea.colorPalette]) {
+        const colors = colorPalettes[tea.colorPalette];
+        modal.style.setProperty('--modal-bg', colors.background);
+        modal.style.setProperty('--modal-border', colors.border);
+        modal.style.setProperty('--modal-border-dashed', colors.borderDashed);
+        modal.style.setProperty('--modal-shadow1', colors.shadow1);
+        modal.style.setProperty('--modal-shadow2', colors.shadow2);
+        modal.style.setProperty('--modal-title', colors.title);
+        modal.style.setProperty('--modal-title-shadow', colors.titleShadow);
+        modal.style.setProperty('--modal-subtitle', colors.description);
+        modal.style.setProperty('--modal-details-bg', colors.backgroundHover);
+        modal.style.setProperty('--modal-details-border', colors.borderDashed);
+        modal.style.setProperty('--modal-details-text', colors.title);
+        modal.style.setProperty('--modal-details-bold', colors.border);
+        modal.style.setProperty('--modal-close-bg', colors.badgeBackground);
+        modal.style.setProperty('--modal-close-border', colors.badgeBorder);
+        modal.style.setProperty('--modal-close-text', colors.badgeText);
+        modal.style.setProperty('--modal-close-hover', colors.border);
+        modal.style.setProperty('--modal-timer-bg', colors.border);
+        modal.style.setProperty('--modal-timer-border', colors.shadow2);
+        modal.style.setProperty('--modal-timer-text', colors.badgeText);
+        modal.style.setProperty('--modal-timer-shadow', colors.shadow2);
+        modal.style.setProperty('--modal-timer-display-bg', colors.background);
+        modal.style.setProperty('--modal-timer-display-text', colors.title);
+        modal.style.setProperty('--modal-timer-display-border', colors.shadow2);
+        modal.style.setProperty('--modal-timer-display-shadow', colors.shadow2);
+        modal.style.setProperty('--modal-btn-bg', colors.background);
+        modal.style.setProperty('--modal-btn-border', colors.shadow2);
+        modal.style.setProperty('--modal-btn-text', colors.title);
+        modal.style.setProperty('--modal-btn-hover', colors.borderDashed);
+        modal.style.setProperty('--modal-btn-shadow', colors.shadow2);
+    }
     
     modalContent.innerHTML = `
         <h2>${tea.name}</h2>
@@ -113,15 +187,15 @@ function openModal(tea) {
             </div>
         </div>
         <div class="recipe-section">
-            <h3>Brewing Instructions</h3>
+            <h3>Instructions</h3>
             <div class="recipe-details">
-                <p><strong>Temperature:</strong> ${tea.temperature}</p>
-                <p><strong>Steeping Time:</strong> ${formatTime(tea.steepingTimeSeconds)}</p>
-                ${tea.ingredients ? `<p><strong>Ingredients:</strong> ${tea.ingredients}</p>` : ''}
+                <p><strong>Température:</strong> ${tea.temperature}</p>
+                <p><strong>Temps d'infusion:</strong> ${formatTime(tea.steepingTimeSeconds)}</p>
+                ${tea.ingredients ? `<p><strong>Ingrédients:</strong> ${tea.ingredients}</p>` : ''}
             </div>
         </div>
         <div class="timer-section">
-            <h3>Steeping Timer</h3>
+            <h3>Minuteur de thé</h3>
             <div class="timer-display" id="timer-display">${formatTime(tea.steepingTimeSeconds)}</div>
             <div class="timer-controls">
                 <button class="timer-btn start" onclick="startTimer(${tea.steepingTimeSeconds})">Start</button>
@@ -172,7 +246,7 @@ function startTimer(duration) {
             clearInterval(timerInterval);
             timerInterval = null;
             document.getElementById('timer-display').textContent = "00:00";
-            alert("🍵 Your tea is ready! Time to enjoy your perfect brew.");
+            alert("🍵 Votre thé est prêt ! Savourez-le bien !"); //notification apres le temps ecoule
             return;
         }
         
