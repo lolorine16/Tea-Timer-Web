@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="recipe-title">Recette - Tea Timer</title>
+    <link rel="icon" type="image/png" href="./assets/images/recipes/tea.png">
+    <link rel="shortcut icon" type="image/png" href="./assets/images/recipes/tea.png">
+    <link rel="apple-touch-icon" href="./assets/images/recipes/tea.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="recipe.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header avec navigation -->
+        <header class="recipe-page-header">
+            <div class="back-navigation">
+                <button class="back-btn" onclick="goBack()">← Retour</button>
+            </div>
+            <h1 class="recipe-page-title" id="recipe-name">Recette du thé</h1>
+        </header>
+
+        <!-- Separator Bar -->
+        <div class="header-separator">
+            <div class="separator-line"></div>
+            <div class="separator-ornament">🍵</div>
+            <div class="separator-line"></div>
+        </div>
+
+        <main class="recipe-page-main">
+            <!-- Recipe Header -->
+            <div class="recipe-page-content">
+                <div class="recipe-hero">
+                    <img src="" alt="" class="recipe-hero-image" id="recipe-image">
+                    <div class="recipe-info">
+                        <p class="recipe-description" id="recipe-description"></p>
+                        <div class="recipe-meta-grid" id="recipe-meta">
+                            <!-- Meta info will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recipe Sections -->
+                <div class="recipe-sections">
+                    <div class="recipe-card">
+                        <h2 class="recipe-section-title">📝 Instructions de préparation</h2>
+                        <ol class="recipe-steps" id="recipe-steps">
+                            <!-- Steps will be inserted here -->
+                        </ol>
+                    </div>
+
+                    <div class="recipe-card">
+                        <h2 class="recipe-section-title">💡 Conseils d'expert</h2>
+                        <ul class="recipe-tips" id="recipe-tips">
+                            <!-- Tips will be inserted here -->
+                        </ul>
+                    </div>
+
+                    <div class="recipe-card">
+                        <h2 class="recipe-section-title">🌟 Bienfaits pour la santé</h2>
+                        <ul class="recipe-benefits" id="recipe-benefits">
+                            <!-- Benefits will be inserted here -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="recipe-actions">
+                    <button class="recipe-action-btn primary" onclick="goBackToTimer()">Retour au minuteur</button>
+                    <button class="recipe-action-btn secondary" onclick="goHome()">Accueil</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-separator">
+                <div class="footer-line"></div>
+                <div class="footer-ornament">☕</div>
+                <div class="footer-line"></div>
+            </div>
+            <div class="footer-content">
+                <p class="footer-text">Tea Timer © 2025</p>
+                <p class="footer-subtitle">Savourez chaque moment</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="recipe.js"></script>
+    <script src="animation.js"></script>
+</body>
+</html>

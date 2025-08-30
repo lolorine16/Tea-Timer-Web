@@ -8,6 +8,7 @@
     <link rel="shortcut icon" type="image/png" href="./assets/images/recipes/tea.png">
     <link rel="apple-touch-icon" href="./assets/images/recipes/tea.png">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="recipe.css">
 </head>
 <body>
     <div class="container">
@@ -85,6 +86,16 @@
             <button class="close-btn" onclick="closeModal()">&times;</button>
             <div id="modal-content">
                 <!-- Modal content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Recipe Modal -->
+    <div id="recipe-modal-overlay" class="modal-overlay">
+        <div class="recipe-modal">
+            <button class="close-btn" onclick="closeRecipeModal()">&times;</button>
+            <div id="recipe-modal-content">
+                <!-- Recipe content will be inserted here -->
             </div>
         </div>
     </div>

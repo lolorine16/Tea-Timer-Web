@@ -1,7 +1,6 @@
 
 // Global variables
 let teasData = [];
-let colorPalettes = {};
 let currentTimer = null;
 let timerInterval = null;
 let timeRemaining = 0;
@@ -51,50 +50,12 @@ function testJsonLoad() {
     displayWelcomeSection();
 }
 
-// Load color palettes from JSON file
-async function loadColorPalettes() {
-    console.log('Loading color palettes...');
-    try {
-        const response = await fetch('./color-palettes.json');
-        console.log('Color palettes response:', response.status);
-        if (!response.ok) {
-            throw new Error('Failed to load color palettes');
-        }
-        colorPalettes = await response.json();
-        console.log('Color palettes loaded successfully');
-    } catch (error) {
-        console.error('Error loading color palettes:', error);
-        // Utiliser des données par défaut
-        colorPalettes = {
-            "orange-palette": {
-                "background": "#f0f5dc",
-                "backgroundHover": "#f0f5dc", 
-                "border": "#d87f5c",
-                "borderDashed": "#f0b886",
-                "shadow1": "#f0b886",
-                "shadow2": "#8b3e34",
-                "title": "#8b3e34",
-                "titleShadow": "#f0b886",
-                "description": "#d87f5c",
-                "badgeBackground": "#f0933b",
-                "badgeText": "#f0f5dc",
-                "badgeBorder": "#d87f5c",
-                "badgeShadow": "#8b3e34"
-            }
-        };
-    }
-}
-
 // Load tea data from JSON file
 async function loadTeaData() {
     console.log('Starting to load tea data...');
     console.log('Current URL:', window.location.href);
     
     try {
-        // Load both tea data and color palettes
-        console.log('Loading color palettes...');
-        await loadColorPalettes();
-        
         console.log('Fetching teas.json...');
         const response = await fetch('./teas.json');
         console.log('Response status:', response.status, response.statusText);
@@ -175,25 +136,8 @@ function displayTeas() {
         teaCard.className = 'tea-card';
         teaCard.onclick = () => openModal(tea);
         
-        // Apply colors from palette reference (attribution de chaque couleur depuis color-palettes.json)
-        if (tea.colorPalette && colorPalettes[tea.colorPalette]) {
-            const colors = colorPalettes[tea.colorPalette];
-            teaCard.style.setProperty('--card-bg', colors.background);
-            teaCard.style.setProperty('--card-bg-hover', colors.backgroundHover);
-            teaCard.style.setProperty('--card-border', colors.border);
-            teaCard.style.setProperty('--card-border-dashed', colors.borderDashed);
-            teaCard.style.setProperty('--card-shadow1', colors.shadow1);
-            teaCard.style.setProperty('--card-shadow2', colors.shadow2);
-            teaCard.style.setProperty('--card-title', colors.title);
-            teaCard.style.setProperty('--card-title-shadow', colors.titleShadow);
-            teaCard.style.setProperty('--card-description', colors.description);
-            teaCard.style.setProperty('--card-badge-bg', colors.badgeBackground);
-            teaCard.style.setProperty('--card-badge-text', colors.badgeText);
-            teaCard.style.setProperty('--card-badge-border', colors.badgeBorder);
-            teaCard.style.setProperty('--card-badge-shadow', colors.badgeShadow);
-        }
-        // Fallback: apply custom colors if available (legacy support) (couleur propre a chaque the)
-        else if (tea.colors) {
+        // Apply colors from tea-specific colors directly
+        if (tea.colors) {
             teaCard.style.setProperty('--card-bg', tea.colors.background);
             teaCard.style.setProperty('--card-bg-hover', tea.colors.backgroundHover);
             teaCard.style.setProperty('--card-border', tea.colors.border);
@@ -230,38 +174,44 @@ function openModal(tea) {
     const modalContent = document.getElementById('modal-content');
     const modal = modalOverlay.querySelector('.modal');
     
-    // Apply colors from palette reference to modal (Ajouter des couleurs au popup)
-    if (tea.colorPalette && colorPalettes[tea.colorPalette]) {
-        const colors = colorPalettes[tea.colorPalette];
-        modal.style.setProperty('--modal-bg', colors.background);
-        modal.style.setProperty('--modal-border', colors.border);
-        modal.style.setProperty('--modal-border-dashed', colors.borderDashed);
-        modal.style.setProperty('--modal-shadow1', colors.shadow1);
-        modal.style.setProperty('--modal-shadow2', colors.shadow2);
-        modal.style.setProperty('--modal-title', colors.title);
-        modal.style.setProperty('--modal-title-shadow', colors.titleShadow);
-        modal.style.setProperty('--modal-subtitle', colors.description);
-        modal.style.setProperty('--modal-details-bg', colors.backgroundHover);
-        modal.style.setProperty('--modal-details-border', colors.borderDashed);
-        modal.style.setProperty('--modal-details-text', colors.title);
-        modal.style.setProperty('--modal-details-bold', colors.border);
-        modal.style.setProperty('--modal-close-bg', colors.badgeBackground);
-        modal.style.setProperty('--modal-close-border', colors.badgeBorder);
-        modal.style.setProperty('--modal-close-text', colors.badgeText);
-        modal.style.setProperty('--modal-close-hover', colors.border);
-        modal.style.setProperty('--modal-timer-bg', colors.border);
-        modal.style.setProperty('--modal-timer-border', colors.shadow2);
-        modal.style.setProperty('--modal-timer-text', colors.badgeText);
-        modal.style.setProperty('--modal-timer-shadow', colors.shadow2);
-        modal.style.setProperty('--modal-timer-display-bg', colors.background);
-        modal.style.setProperty('--modal-timer-display-text', colors.title);
-        modal.style.setProperty('--modal-timer-display-border', colors.shadow2);
-        modal.style.setProperty('--modal-timer-display-shadow', colors.shadow2);
-        modal.style.setProperty('--modal-btn-bg', colors.background);
-        modal.style.setProperty('--modal-btn-border', colors.shadow2);
-        modal.style.setProperty('--modal-btn-text', colors.title);
-        modal.style.setProperty('--modal-btn-hover', colors.borderDashed);
-        modal.style.setProperty('--modal-btn-shadow', colors.shadow2);
+    // Apply colors from tea-specific colors to modal (Ajouter des couleurs au popup)
+    if (tea.colors) {
+        modal.style.setProperty('--modal-bg', tea.colors.background);
+        modal.style.setProperty('--modal-border', tea.colors.border);
+        modal.style.setProperty('--modal-border-dashed', tea.colors.borderDashed);
+        modal.style.setProperty('--modal-shadow1', tea.colors.shadow1);
+        modal.style.setProperty('--modal-shadow2', tea.colors.shadow2);
+        modal.style.setProperty('--modal-title', tea.colors.title);
+        modal.style.setProperty('--modal-title-shadow', tea.colors.titleShadow);
+        modal.style.setProperty('--modal-subtitle', tea.colors.description);
+        modal.style.setProperty('--modal-details-bg', tea.colors.backgroundHover);
+        modal.style.setProperty('--modal-details-border', tea.colors.borderDashed);
+        modal.style.setProperty('--modal-details-text', tea.colors.title);
+        modal.style.setProperty('--modal-details-bold', tea.colors.border);
+        modal.style.setProperty('--modal-close-bg', tea.colors.badgeBackground);
+        modal.style.setProperty('--modal-close-border', tea.colors.badgeBorder);
+        modal.style.setProperty('--modal-close-text', tea.colors.badgeText);
+        modal.style.setProperty('--modal-close-hover', tea.colors.border);
+        modal.style.setProperty('--modal-timer-bg', tea.colors.border);
+        modal.style.setProperty('--modal-timer-border', tea.colors.shadow2);
+        modal.style.setProperty('--modal-timer-text', tea.colors.badgeText);
+        modal.style.setProperty('--modal-timer-shadow', tea.colors.shadow2);
+        modal.style.setProperty('--modal-timer-display-bg', tea.colors.background);
+        modal.style.setProperty('--modal-timer-display-text', tea.colors.title);
+        modal.style.setProperty('--modal-timer-display-border', tea.colors.shadow2);
+        modal.style.setProperty('--modal-timer-display-shadow', tea.colors.shadow2);
+        modal.style.setProperty('--modal-btn-bg', tea.colors.background);
+        modal.style.setProperty('--modal-btn-border', tea.colors.shadow2);
+        modal.style.setProperty('--modal-btn-text', tea.colors.title);
+        modal.style.setProperty('--modal-btn-hover', tea.colors.borderDashed);
+        modal.style.setProperty('--modal-btn-shadow', tea.colors.shadow2);
+        
+        // Apply colors to recipe button specifically
+        modal.style.setProperty('--modal-badge-bg', tea.colors.badgeBackground);
+        modal.style.setProperty('--modal-badge-border', tea.colors.badgeBorder);
+        modal.style.setProperty('--modal-badge-text', tea.colors.badgeText);
+        modal.style.setProperty('--modal-badge-shadow', tea.colors.shadow2);
+        modal.style.setProperty('--modal-text', tea.colors.title);
     }
     
     modalContent.innerHTML = `
@@ -288,6 +238,11 @@ function openModal(tea) {
                 <button class="timer-btn pause" onclick="pauseTimer()">Pause</button>
                 <button class="timer-btn reset" onclick="resetTimer(${tea.steepingTimeSeconds})">Reset</button>
             </div>
+            ${tea.recipe ? `
+            <div class="recipe-discovery" style="margin-top: 1.5rem; text-align: center;">
+                <button class="recipe-button" onclick="openRecipePage('${tea.name}')">Découvrir la recette</button>
+            </div>
+            ` : ''}
         </div>
     `;
     
@@ -311,6 +266,12 @@ function closeModal() {
         timerInterval = null;
     }
     isPaused = false;
+}
+
+// Open recipe page
+function openRecipePage(teaName) {
+    const recipeUrl = `recipe.html?tea=${encodeURIComponent(teaName)}`;
+    window.location.href = recipeUrl;
 }
 
 // Timer functions
@@ -426,6 +387,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize the application
     loadTeaData();
     
+    // Check if we should open a specific tea timer from URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const openTimerTea = urlParams.get('openTimer');
+    if (openTimerTea) {
+        // Wait for data to load, then open the modal
+        setTimeout(() => {
+            const tea = teasData.find(t => t.name === decodeURIComponent(openTimerTea));
+            if (tea) {
+                openModal(tea);
+            }
+        }, 1000);
+    }
+    
     // Set up modal event listeners
     const modalOverlay = document.getElementById('modal-overlay');
     
@@ -438,7 +412,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Close modal with Escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
-            closeModal();
+            if (modalOverlay.classList.contains('active')) {
+                closeModal();
+            }
         }
     });
 });

@@ -6,16 +6,96 @@
     "steepingTimeSeconds": 240,
     "ingredients": "Thé noir, citron, orange, menthe",
     "image": "./assets/images/IceTea.png",
-    "colorPalette": "orange-palette"
+    "colors": {
+      "background": "#e8f4fd",
+      "backgroundHover": "#e8f4fd", 
+      "border": "#5dade2",
+      "borderDashed": "#85c1e9",
+      "shadow1": "#85c1e9",
+      "shadow2": "#2980b9",
+      "title": "#2980b9",
+      "titleShadow": "#85c1e9",
+      "description": "#5dade2",
+      "badgeBackground": "#3498db",
+      "badgeText": "#ffffff",
+      "badgeBorder": "#2980b9",
+      "badgeShadow": "#2980b9"
+    },
+    "recipe": {
+      "preparationSteps": [
+        "Faire bouillir 500ml d'eau dans une casserole",
+        "Ajouter 3 sachets de thé noir et laisser infuser 4 minutes",
+        "Retirer les sachets et laisser refroidir le thé",
+        "Presser le jus d'un demi-citron et d'une demi-orange",
+        "Ajouter le jus d'agrumes au thé refroidi",
+        "Incorporer quelques feuilles de menthe fraîche",
+        "Ajouter des glaçons et servir bien frais"
+      ],
+      "tips": [
+        "Pour plus de saveur, laissez infuser les feuilles de menthe 30 minutes avant de servir",
+        "Ajoutez une cuillère de miel pour une version légèrement sucrée",
+        "Décorez avec une rondelle de citron et un brin de menthe"
+      ],
+      "benefits": [
+        "Riche en antioxydants grâce au thé noir",
+        "La menthe aide à la digestion et rafraîchit",
+        "Les agrumes apportent de la vitamine C",
+        "Boisson hydratante parfaite pour l'été"
+      ],
+      "servingSize": "2 verres",
+      "difficulty": "Facile",
+      "totalTime": "15 minutes"
+    }
   },
   {
     "name": "STRAWBERRY MATCHA",
-    "description": "Un délicieux bubble tea au matcha avec des perles de tapioca. Onctueux et légèrement sucré avec une belle couleur verte.",
+    "description": "Un délicieux mélange onctueux de matcha japonais, de lait à la fraise et de fraises confites. Une boisson crémeuse aux saveurs douces et sucrées, parfaite pour les amateurs de matcha qui aiment les notes fruitées.",
     "temperature": "Servir froid",
     "steepingTimeSeconds": 180,
-    "ingredients": "Poudre de matcha, lait, sucre, perles de tapioca, fraises",
+    "ingredients": "Poudre de matcha, lait à la fraise, fraises confites, sucre",
     "image": "./assets/images/StrawberryMatcha.png",
-    "colorPalette": "pink-palette"
+    "colors": {
+      "background": "#fdf2f8",
+      "backgroundHover": "#fdf2f8", 
+      "border": "#f48fb1",
+      "borderDashed": "#f8bbd9",
+      "shadow1": "#f8bbd9",
+      "shadow2": "#c2185b",
+      "title": "#c2185b",
+      "titleShadow": "#f8bbd9",
+      "description": "#f48fb1",
+      "badgeBackground": "#e91e63",
+      "badgeText": "#ffffff",
+      "badgeBorder": "#c2185b",
+      "badgeShadow": "#c2185b"
+    },
+    "recipe": {
+      "preparationSteps": [
+        "Tamiser 1 cuillère à café de poudre de matcha dans un bol",
+        "Ajouter 2 cuillères à soupe d'eau chaude (70°C)",
+        "Fouetter énergiquement jusqu'à obtenir une pâte lisse",
+        "Dans un verre, verser 200ml de lait à la fraise froid",
+        "Incorporer délicatement la pâte de matcha au lait",
+        "Ajouter les fraises confites coupées en petits morceaux",
+        "Mélanger doucement et ajouter du sucre selon le goût",
+        "Servir immédiatement avec des glaçons"
+      ],
+      "tips": [
+        "Utilisez un matcha de qualité cérémoniale pour un goût authentique",
+        "Le lait doit être bien froid pour contraster avec le matcha",
+        "Préparez vos fraises confites à l'avance pour plus de saveur",
+        "Décorez avec une fraise fraîche et une pincée de matcha"
+      ],
+      "benefits": [
+        "Le matcha est riche en antioxydants et en L-théanine",
+        "Boost d'énergie naturel sans nervosité",
+        "Les fraises apportent de la vitamine C",
+        "Calcium et protéines du lait pour les os"
+      ],
+      "servingSize": "1 grand verre",
+      "difficulty": "Moyen",
+      "totalTime": "10 minutes"
+    }
   },
   {
     "name": "MATCHA BOBA TEA",
@@ -24,7 +104,50 @@
     "steepingTimeSeconds": 180,
     "ingredients": "Poudre de matcha, lait, sucre, perles de tapioca",
     "image": "./assets/images/MatchaBoba.png",
-    "colorPalette": "green-palette"
+    "colors": {
+      "background": "#f1f8e9",
+      "backgroundHover": "#f1f8e9", 
+      "border": "#66bb6a",
+      "borderDashed": "#a5d6a7",
+      "shadow1": "#a5d6a7",
+      "shadow2": "#2e7d32",
+      "title": "#2e7d32",
+      "titleShadow": "#a5d6a7",
+      "description": "#66bb6a",
+      "badgeBackground": "#4caf50",
+      "badgeText": "#ffffff",
+      "badgeBorder": "#2e7d32",
+      "badgeShadow": "#2e7d32"
+    },
+    "recipe": {
+      "preparationSteps": [
+        "Faire cuire 50g de perles de tapioca dans l'eau bouillante pendant 15 minutes",
+        "Égoutter et rincer les perles à l'eau froide",
+        "Dans un bol, mélanger les perles avec 2 c.à.s de sirop de sucre brun",
+        "Tamiser 1 c.à.c de poudre de matcha dans un shaker",
+        "Ajouter 3 c.à.s d'eau chaude et fouetter jusqu'à dissolution",
+        "Ajouter 200ml de lait froid et 2 c.à.s de sucre",
+        "Secouer énergiquement pendant 30 secondes",
+        "Verser les perles au fond d'un grand verre",
+        "Ajouter des glaçons puis verser le mélange matcha-lait",
+        "Servir avec une paille large pour les perles"
+      ],
+      "tips": [
+        "Les perles doivent être moelleuses mais pas molles",
+        "Utilisez du lait entier pour plus de crémeux",
+        "Ajustez le sucre selon vos préférences",
+        "Servez immédiatement pour éviter que les perles durcissent"
+      ],
+      "benefits": [
+        "Antioxydants puissants du matcha pour la santé",
+        "Énergie durable grâce à la L-théanine",
+        "Texture amusante et satisfaisante des perles",
+        "Alternative plus saine aux sodas"
+      ],
+      "servingSize": "1 grand verre",
+      "difficulty": "Difficile",
+      "totalTime": "25 minutes"
+    }
   },
   {
     "name": "BOBA TEA",
@@ -33,7 +156,52 @@
     "steepingTimeSeconds": 150,
     "ingredients": "Thé noir, lait, sucre, perles de tapioca noires",
     "image": "./assets/images/Boba.png",
-    "colorPalette": "brown-palette"
+    "colors": {
+      "background": "#fdf6e3",
+      "backgroundHover": "#fdf6e3", 
+      "border": "#d4a574",
+      "borderDashed": "#ddbf94",
+      "shadow1": "#ddbf94",
+      "shadow2": "#8b4513",
+      "title": "#8b4513",
+      "titleShadow": "#ddbf94",
+      "description": "#d4a574",
+      "badgeBackground": "#cd853f",
+      "badgeText": "#ffffff",
+      "badgeBorder": "#8b4513",
+      "badgeShadow": "#8b4513"
+    },
+    "recipe": {
+      "preparationSteps": [
+        "Faire cuire 50g de perles de tapioca noires dans l'eau bouillante pendant 20 minutes",
+        "Remuer régulièrement pour éviter qu'elles collent",
+        "Une fois cuites, égoutter et rincer à l'eau froide",
+        "Mélanger les perles avec 3 c.à.s de sirop de cassonade",
+        "Préparer un thé noir fort avec 2 sachets dans 250ml d'eau bouillante",
+        "Laisser infuser 5 minutes puis retirer les sachets",
+        "Ajouter 2 c.à.s de sucre au thé chaud et mélanger",
+        "Laisser refroidir complètement le thé sucré",
+        "Dans un grand verre, déposer les perles de tapioca au fond",
+        "Ajouter des glaçons puis verser 150ml de lait froid",
+        "Compléter avec le thé noir refroidi",
+        "Servir avec une paille large pour aspirer les perles"
+      ],
+      "tips": [
+        "Les perles doivent être tendres à l'extérieur et légèrement fermes au centre",
+        "Préparez les perles maximum 4 heures à l'avance",
+        "Variez les plaisirs avec du lait d'amande ou de coco",
+        "Ajustez la quantité de sucre selon vos préférences"
+      ],
+      "benefits": [
+        "Le thé noir est riche en théaflavines antioxydantes",
+        "Source d'énergie grâce à la caféine naturelle",
+        "Les perles de tapioca apportent des glucides énergétiques",
+        "Plaisir gustatif unique avec la texture des perles"
+      ],
+      "servingSize": "1 grand verre",
+      "difficulty": "Moyen",
+      "totalTime": "30 minutes"
+    }
   },
   {
     "name": "BLUEBERRY BOBA TEA",
@@ -42,7 +210,52 @@
     "steepingTimeSeconds": 150,
     "ingredients": "Thé noir, myrtilles, lait, sucre, perles de tapioca",
     "image": "./assets/images/BlueBerryBoba.png",
-    "colorPalette": "purple-palette"
+    "colors": {
+      "background": "#f3e5f5",
+      "backgroundHover": "#f3e5f5", 
+      "border": "#9c27b0",
+      "borderDashed": "#ce93d8",
+      "shadow1": "#ce93d8",
+      "shadow2": "#6a1b9a",
+      "title": "#6a1b9a",
+      "titleShadow": "#ce93d8",
+      "description": "#9c27b0",
+      "badgeBackground": "#8e24aa",
+      "badgeText": "#ffffff",
+      "badgeBorder": "#6a1b9a",
+      "badgeShadow": "#6a1b9a"
+    },
+    "recipe": {
+      "preparationSteps": [
+        "Préparer les perles de tapioca comme pour un boba classique (20 min de cuisson)",
+        "Écraser légèrement 100g de myrtilles fraîches dans un bol",
+        "Ajouter 2 c.à.s de sucre aux myrtilles écrasées et laisser mariner 15 minutes",
+        "Préparer un thé noir léger avec 1 sachet dans 200ml d'eau chaude",
+        "Laisser infuser 3 minutes seulement pour ne pas masquer le goût des myrtilles",
+        "Filtrer le mélange de myrtilles pour récupérer le jus",
+        "Mélanger le jus de myrtilles au thé refroidi",
+        "Dans un verre, déposer les perles de tapioca au fond",
+        "Ajouter quelques myrtilles entières pour la décoration",
+        "Verser le mélange thé-myrtilles sur les glaçons",
+        "Compléter avec 100ml de lait froid",
+        "Remuer délicatement et servir avec une paille large"
+      ],
+      "tips": [
+        "Utilisez des myrtilles bien mûres pour plus de saveur",
+        "Gardez quelques myrtilles entières pour la présentation",
+        "Le thé ne doit pas être trop fort pour laisser briller les myrtilles",
+        "Ajoutez une cuillère de miel si vous préférez plus sucré"
+      ],
+      "benefits": [
+        "Les myrtilles sont riches en anthocyanes, puissants antioxydants",
+        "Excellente source de vitamine C et de fibres",
+        "Propriétés anti-inflammatoires des baies",
+        "Le thé noir stimule la concentration et l'énergie"
+      ],
+      "servingSize": "1 grand verre",
+      "difficulty": "Moyen",
+      "totalTime": "25 minutes"
+    }
   },
   {
     "name": "HOT GREEN TEA",
@@ -51,7 +264,50 @@
     "steepingTimeSeconds": 180,
     "ingredients": "Thé vert, miel, citron",
     "image": "./assets/images/HoTea.png",
-    "colorPalette": "orange-palette"
+    "colors": {
+      "background": "#fff3e0",
+      "backgroundHover": "#fff3e0", 
+      "border": "#ff9800",
+      "borderDashed": "#ffcc02",
+      "shadow1": "#ffcc02",
+      "shadow2": "#e65100",
+      "title": "#e65100",
+      "titleShadow": "#ffcc02",
+      "description": "#ff9800",
+      "badgeBackground": "#ff9800",
+      "badgeText": "#ffffff",
+      "badgeBorder": "#e65100",
+      "badgeShadow": "#e65100"
+    },
+    "recipe": {
+      "preparationSteps": [
+        "Faire chauffer 250ml d'eau à 70°C (ne pas faire bouillir)",
+        "Placer 1 cuillère à café de thé vert en vrac dans une théière",
+        "Verser l'eau chaude sur les feuilles de thé",
+        "Laisser infuser exactement 3 minutes pour éviter l'amertume",
+        "Filtrer le thé dans une tasse préchauffée",
+        "Presser le jus d'un quart de citron frais",
+        "Ajouter 1 cuillère à café de miel de qualité",
+        "Remuer délicatement jusqu'à dissolution du miel",
+        "Décorer avec une fine rondelle de citron",
+        "Servir immédiatement pendant qu'il est chaud"
+      ],
+      "tips": [
+        "Ne jamais utiliser d'eau bouillante pour le thé vert, cela le rendrait amer",
+        "Choisissez un miel floral pour compléter les notes végétales",
+        "Préchauffez la tasse avec un peu d'eau chaude avant de servir",
+        "Utilisez un citron bio non traité pour la rondelle de décoration"
+      ],
+      "benefits": [
+        "Très riche en catéchines, antioxydants puissants",
+        "Le miel apporte des propriétés antibactériennes naturelles",
+        "La vitamine C du citron renforce le système immunitaire",
+        "Boisson apaisante et réchauffante, idéale contre le stress"
+      ],
+      "servingSize": "1 tasse",
+      "difficulty": "Facile",
+      "totalTime": "8 minutes"
+    }
   },
   {
     "name": "ICE MATCHA LATTE",
@@ -60,7 +316,52 @@
     "steepingTimeSeconds": 30,
     "ingredients": "Poudre de matcha, lait, sucre, glace",
     "image": "./assets/images/Matcha1.png",
-    "colorPalette": "green-palette"
+    "colors": {
+      "background": "#e8f5e8",
+      "backgroundHover": "#e8f5e8", 
+      "border": "#4caf50",
+      "borderDashed": "#81c784",
+      "shadow1": "#81c784",
+      "shadow2": "#1b5e20",
+      "title": "#1b5e20",
+      "titleShadow": "#81c784",
+      "description": "#4caf50",
+      "badgeBackground": "#388e3c",
+      "badgeText": "#ffffff",
+      "badgeBorder": "#1b5e20",
+      "badgeShadow": "#1b5e20"
+    },
+    "recipe": {
+      "preparationSteps": [
+        "Tamiser 1 cuillère à café rase de poudre de matcha dans un bol",
+        "Ajouter 2 cuillères à soupe d'eau chaude (70°C)",
+        "Fouetter vigoureusement avec un fouet à matcha ou une fourchette",
+        "Continuer jusqu'à obtenir une pâte lisse sans grumeaux",
+        "Dans un shaker, verser 200ml de lait entier bien froid",
+        "Ajouter 2 cuillères à café de sucre en poudre",
+        "Incorporer la pâte de matcha au lait",
+        "Secouer énergiquement pendant 1 minute pour faire mousser",
+        "Remplir un grand verre de glaçons",
+        "Verser le mélange mousseux sur les glaçons",
+        "Saupoudrer légèrement de matcha en poudre sur le dessus",
+        "Servir immédiatement avec une paille"
+      ],
+      "tips": [
+        "Utilisez du matcha de grade culinaire de bonne qualité",
+        "Le lait doit être très froid pour créer une belle mousse",
+        "Un fouet à matcha traditionnel (chasen) donne les meilleurs résultats",
+        "Ajustez la quantité de matcha selon l'intensité désirée"
+      ],
+      "benefits": [
+        "Concentration élevée en L-théanine pour la relaxation et la concentration",
+        "Antioxydants 137 fois plus élevés que le thé vert classique",
+        "Énergie durable sans les pics et chutes de la caféine",
+        "Propriétés détoxifiantes et stimulation du métabolisme"
+      ],
+      "servingSize": "1 grand verre",
+      "difficulty": "Facile",
+      "totalTime": "5 minutes"
+    }
   }
 ]
  
