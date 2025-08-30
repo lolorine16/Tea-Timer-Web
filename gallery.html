@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie des Thés - Tea Timer</title>
+    <link rel="icon" type="image/png" href="./assets/images/recipes/tea.png">
+    <link rel="shortcut icon" type="image/png" href="./assets/images/recipes/tea.png">
+    <link rel="apple-touch-icon" href="./assets/images/recipes/tea.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav class="back-navigation">
+                <button class="back-btn" onclick="window.location.href='index.html'">← Accueil</button>
+            </nav>
+            <h1>Galerie des Thés</h1>
+            <p class="subtitle">Choisissez votre thé parfait</p>
+        </header>
+
+        <!-- Separator Bar -->
+        <div class="header-separator">
+            <div class="separator-line"></div>
+            <div class="separator-ornament">◆◆◆</div>
+            <div class="separator-line"></div>
+        </div>
+
+        <main>
+            <!-- Recipe Images Carousel -->
+            <div id="recipes-carousel" class="recipes-carousel">
+                <h2 class="carousel-title">Liste des Ingrédients</h2>
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carousel-track">
+                        <!-- Recipe images will be inserted here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading indicator -->
+            <div id="loading" class="loading">
+                <p>Chargement des thés...</p>
+            </div>
+
+            <!-- Gallery Label -->
+            <div id="gallery-label" class="gallery-label" style="display: none;">
+                <h2 class="section-title">Sélectionnez votre Thé</h2>
+            </div>
+            
+            <div id="tea-grid" class="tea-grid" style="display: none;">
+                <!-- Tea cards will be inserted here -->
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-separator">
+                <div class="footer-line"></div>
+                <div class="footer-ornament">☕</div>
+                <div class="footer-line"></div>
+            </div>
+            <div class="footer-content">
+                <p class="footer-text">Tea Timer © 2025</p>
+                <p class="footer-subtitle">Savourez chaque moment</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal for tea details -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="modal-content">
+                <!-- Modal content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Animation Background -->
+    <canvas id="falling-leaves"></canvas>
+
+    <!-- Scripts -->
+    <script src="animation.js"></script>
+    <script src="gallery.js"></script>
+</body>
+</html>

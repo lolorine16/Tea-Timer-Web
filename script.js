@@ -91,10 +91,6 @@ async function loadTeaData() {
     console.log('Current URL:', window.location.href);
     
     try {
-        // Load both tea data and color palettes
-        console.log('Loading color palettes...');
-        await loadColorPalettes();
-        
         console.log('Fetching teas.json...');
         const response = await fetch('./teas.json');
         console.log('Response status:', response.status, response.statusText);
@@ -406,7 +402,7 @@ function displayWelcomeSection() {
     }, 500);
 }
 
-// Afficher le contenu principal (carrousel et cartes)
+// Afficher le contenu principal (seulement le bouton commencer pour la page d'accueil)
 function showMainContent() {
     if (appInitialized) {
         return; // Éviter les appels multiples
@@ -415,8 +411,8 @@ function showMainContent() {
     appInitialized = true;
     console.log('Showing main content...');
     
-    displayRecipeImages();
-    displayTeas();
+    // Ne plus afficher le carrousel ni la galerie sur la page d'accueil
+    // Tout est maintenant dans gallery.html
 }
 
 // Event Listeners

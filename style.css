@@ -675,6 +675,101 @@ h1 {
     margin: 1rem 0;
 }
 
+/* Start Section Styles */
+.start-section {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1rem 2rem;
+    /*background: var(--creme-clair);
+    border: 4px solid var(--brique);
+    box-shadow: 
+        4px 4px 0px var(--orange-clair),
+        8px 8px 0px var(--orange-terre);
+    position: relative;
+    image-rendering: pixelated;*/
+}
+
+.start-section::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 2px dashed var(--orange-clair);
+    pointer-events: none;
+}
+
+.start-btn {
+    background: var(--orange-vif);
+    border: 4px solid var(--brique);
+    color: var(--creme);
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    font-size: 1.3rem;
+    padding: 1.2rem 2.5rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.1s ease;
+    margin-bottom: 1rem;
+    box-shadow: 4px 4px 0px var(--brique);
+    image-rendering: pixelated;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.start-btn:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 7px 7px 0px var(--brique);
+    background: var(--orange-terre);
+}
+
+.start-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--brique);
+}
+
+.start-subtitle {
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    color: var(--brique);
+    font-size: 1rem;
+    margin-top: 1rem;
+    line-height: 1.4;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Back Navigation for Gallery */
+.back-navigation {
+    margin-bottom: 2rem;
+}
+
+.back-btn {
+    background: var(--orange-terre);
+    border: 3px solid var(--brique);
+    color: var(--creme);
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.1s ease;
+    box-shadow: 3px 3px 0px var(--brique);
+    image-rendering: pixelated;
+}
+
+.back-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--brique);
+}
+
+.back-btn:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px var(--brique);
+}
+
 @media (max-width: 768px) {
     h1 {
         font-size: 2rem;
