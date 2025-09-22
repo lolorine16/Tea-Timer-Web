@@ -1,15 +1,35 @@
 // Gallery page JavaScript
 let teasData = [];
+let colorPalettes = {};
 let currentTimer = null;
 let timerInterval = null;
 let timeRemaining = 0;
 let isPaused = false;
+
+// Load color palettes from JSON file
+async function loadColorPalettes() {
+    try {
+        const response = await fetch('./color-palettes.json');
+        if (!response.ok) {
+            throw new Error(`Failed to load color palettes: ${response.status} ${response.statusText}`);
+        }
+        
+        colorPalettes = await response.json();
+        console.log('Color palettes loaded successfully:', Object.keys(colorPalettes).length, 'palettes found');
+        
+    } catch (error) {
+        console.error('Error loading color palettes:', error);
+    }
+}
 
 // Load tea data from JSON file
 async function loadTeaData() {
     console.log('Loading tea data for gallery...');
     
     try {
+        // Load color palettes first
+        await loadColorPalettes();
+        
         const response = await fetch('./teas.json');
         if (!response.ok) {
             throw new Error(`Failed to load tea data: ${response.status} ${response.statusText}`);
@@ -79,21 +99,22 @@ function displayTeas() {
         teaCard.className = 'tea-card';
         teaCard.onclick = () => openModal(tea);
         
-        // Apply colors from tea-specific colors directly
-        if (tea.colors) {
-            teaCard.style.setProperty('--card-bg', tea.colors.background);
-            teaCard.style.setProperty('--card-bg-hover', tea.colors.backgroundHover);
-            teaCard.style.setProperty('--card-border', tea.colors.border);
-            teaCard.style.setProperty('--card-border-dashed', tea.colors.borderDashed);
-            teaCard.style.setProperty('--card-shadow1', tea.colors.shadow1);
-            teaCard.style.setProperty('--card-shadow2', tea.colors.shadow2);
-            teaCard.style.setProperty('--card-title', tea.colors.title);
-            teaCard.style.setProperty('--card-title-shadow', tea.colors.titleShadow);
-            teaCard.style.setProperty('--card-description', tea.colors.description);
-            teaCard.style.setProperty('--card-badge-bg', tea.colors.badgeBackground);
-            teaCard.style.setProperty('--card-badge-text', tea.colors.badgeText);
-            teaCard.style.setProperty('--card-badge-border', tea.colors.badgeBorder);
-            teaCard.style.setProperty('--card-badge-shadow', tea.colors.badgeShadow);
+        // Apply colors from color palette
+        if (tea.colorPalette && colorPalettes[tea.colorPalette]) {
+            const palette = colorPalettes[tea.colorPalette];
+            teaCard.style.setProperty('--card-bg', palette.background);
+            teaCard.style.setProperty('--card-bg-hover', palette.backgroundHover);
+            teaCard.style.setProperty('--card-border', palette.border);
+            teaCard.style.setProperty('--card-border-dashed', palette.borderDashed);
+            teaCard.style.setProperty('--card-shadow1', palette.shadow1);
+            teaCard.style.setProperty('--card-shadow2', palette.shadow2);
+            teaCard.style.setProperty('--card-title', palette.title);
+            teaCard.style.setProperty('--card-title-shadow', palette.titleShadow);
+            teaCard.style.setProperty('--card-description', palette.description);
+            teaCard.style.setProperty('--card-badge-bg', palette.badgeBackground);
+            teaCard.style.setProperty('--card-badge-text', palette.badgeText);
+            teaCard.style.setProperty('--card-badge-border', palette.badgeBorder);
+            teaCard.style.setProperty('--card-badge-shadow', palette.badgeShadow);
         }
         
         teaCard.innerHTML = `
@@ -117,44 +138,45 @@ function openModal(tea) {
     const modalContent = document.getElementById('modal-content');
     const modal = modalOverlay.querySelector('.modal');
     
-    // Apply colors from tea-specific colors to modal
-    if (tea.colors) {
-        modal.style.setProperty('--modal-bg', tea.colors.background);
-        modal.style.setProperty('--modal-border', tea.colors.border);
-        modal.style.setProperty('--modal-border-dashed', tea.colors.borderDashed);
-        modal.style.setProperty('--modal-shadow1', tea.colors.shadow1);
-        modal.style.setProperty('--modal-shadow2', tea.colors.shadow2);
-        modal.style.setProperty('--modal-title', tea.colors.title);
-        modal.style.setProperty('--modal-title-shadow', tea.colors.titleShadow);
-        modal.style.setProperty('--modal-subtitle', tea.colors.description);
-        modal.style.setProperty('--modal-details-bg', tea.colors.backgroundHover);
-        modal.style.setProperty('--modal-details-border', tea.colors.borderDashed);
-        modal.style.setProperty('--modal-details-text', tea.colors.title);
-        modal.style.setProperty('--modal-details-bold', tea.colors.border);
-        modal.style.setProperty('--modal-close-bg', tea.colors.badgeBackground);
-        modal.style.setProperty('--modal-close-border', tea.colors.badgeBorder);
-        modal.style.setProperty('--modal-close-text', tea.colors.badgeText);
-        modal.style.setProperty('--modal-close-hover', tea.colors.border);
-        modal.style.setProperty('--modal-timer-bg', tea.colors.border);
-        modal.style.setProperty('--modal-timer-border', tea.colors.shadow2);
-        modal.style.setProperty('--modal-timer-text', tea.colors.badgeText);
-        modal.style.setProperty('--modal-timer-shadow', tea.colors.shadow2);
-        modal.style.setProperty('--modal-timer-display-bg', tea.colors.background);
-        modal.style.setProperty('--modal-timer-display-text', tea.colors.title);
-        modal.style.setProperty('--modal-timer-display-border', tea.colors.shadow2);
-        modal.style.setProperty('--modal-timer-display-shadow', tea.colors.shadow2);
-        modal.style.setProperty('--modal-btn-bg', tea.colors.background);
-        modal.style.setProperty('--modal-btn-border', tea.colors.shadow2);
-        modal.style.setProperty('--modal-btn-text', tea.colors.title);
-        modal.style.setProperty('--modal-btn-hover', tea.colors.borderDashed);
-        modal.style.setProperty('--modal-btn-shadow', tea.colors.shadow2);
+    // Apply colors from color palette to modal
+    if (tea.colorPalette && colorPalettes[tea.colorPalette]) {
+        const palette = colorPalettes[tea.colorPalette];
+        modal.style.setProperty('--modal-bg', palette.background);
+        modal.style.setProperty('--modal-border', palette.border);
+        modal.style.setProperty('--modal-border-dashed', palette.borderDashed);
+        modal.style.setProperty('--modal-shadow1', palette.shadow1);
+        modal.style.setProperty('--modal-shadow2', palette.shadow2);
+        modal.style.setProperty('--modal-title', palette.title);
+        modal.style.setProperty('--modal-title-shadow', palette.titleShadow);
+        modal.style.setProperty('--modal-subtitle', palette.description);
+        modal.style.setProperty('--modal-details-bg', palette.backgroundHover);
+        modal.style.setProperty('--modal-details-border', palette.borderDashed);
+        modal.style.setProperty('--modal-details-text', palette.title);
+        modal.style.setProperty('--modal-details-bold', palette.border);
+        modal.style.setProperty('--modal-close-bg', palette.badgeBackground);
+        modal.style.setProperty('--modal-close-border', palette.badgeBorder);
+        modal.style.setProperty('--modal-close-text', palette.badgeText);
+        modal.style.setProperty('--modal-close-hover', palette.border);
+        modal.style.setProperty('--modal-timer-bg', palette.border);
+        modal.style.setProperty('--modal-timer-border', palette.shadow2);
+        modal.style.setProperty('--modal-timer-text', palette.badgeText);
+        modal.style.setProperty('--modal-timer-shadow', palette.shadow2);
+        modal.style.setProperty('--modal-timer-display-bg', palette.background);
+        modal.style.setProperty('--modal-timer-display-text', palette.title);
+        modal.style.setProperty('--modal-timer-display-border', palette.shadow2);
+        modal.style.setProperty('--modal-timer-display-shadow', palette.shadow2);
+        modal.style.setProperty('--modal-btn-bg', palette.background);
+        modal.style.setProperty('--modal-btn-border', palette.shadow2);
+        modal.style.setProperty('--modal-btn-text', palette.title);
+        modal.style.setProperty('--modal-btn-hover', palette.borderDashed);
+        modal.style.setProperty('--modal-btn-shadow', palette.shadow2);
         
         // Apply colors to recipe button specifically
-        modal.style.setProperty('--modal-badge-bg', tea.colors.badgeBackground);
-        modal.style.setProperty('--modal-badge-border', tea.colors.badgeBorder);
-        modal.style.setProperty('--modal-badge-text', tea.colors.badgeText);
-        modal.style.setProperty('--modal-badge-shadow', tea.colors.shadow2);
-        modal.style.setProperty('--modal-text', tea.colors.title);
+        modal.style.setProperty('--modal-badge-bg', palette.badgeBackground);
+        modal.style.setProperty('--modal-badge-border', palette.badgeBorder);
+        modal.style.setProperty('--modal-badge-text', palette.badgeText);
+        modal.style.setProperty('--modal-badge-shadow', palette.shadow2);
+        modal.style.setProperty('--modal-text', palette.title);
     }
     
     modalContent.innerHTML = `
