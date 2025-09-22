@@ -1,0 +1,796 @@
+@font-face {
+    font-family: 'VCR OSD Mono';
+    src: url('./assets/fonts/VCR_OSD_Mono.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+:root {
+    --tea-timer: #A8AF71;
+    /* Noir et gris-bleutés */
+    --noir-bleute: #180c10;
+    --gris-bleu-fonce: #304249;
+    --gris-bleu: #798890;
+    --gris-bleu-clair: #abcbc4;
+    
+    /* Bleus et violets */
+    --bleu-vif: #43abc7;
+    --bleu-fonce: #20488c;
+    --violet: #8174e8;
+    --rose-mauve: #e7aac7;
+    
+    /* Crèmes et oranges */
+    --creme: #f0f5dc;
+    --creme-clair: #ffeede;
+    --orange-clair: #f0b886;
+    --orange-terre: #d87f5c;
+    --brique: #8b3e34;
+    
+    /* Couleurs vives */
+    --orange-vif: #f0933b;
+    --jaune: #f1cc46;
+    --vert-pomme: #89ab3e;
+    --vert-sapin: #306645;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    background: linear-gradient(135deg, var(--creme) 0%, var(--creme-clair) 100%);
+    min-height: 100vh;
+    color: #5d4e37;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+h1 {
+    font-size: 3rem;
+    color: var(--tea-timer);
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #8b7355;
+    font-style: italic;
+}
+
+/* Header Separator */
+.header-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+    padding: 0 2rem;
+}
+
+.separator-line {
+    height: 3px;
+    background: var(--orange-terre);
+    flex: 1;
+    max-width: 200px;
+    box-shadow: 
+        0 1px 0 var(--brique),
+        0 2px 0 var(--orange-clair);
+    image-rendering: pixelated;
+}
+
+.separator-ornament {
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    font-size: 1.5rem;
+    color: var(--brique);
+    margin: 0 1.5rem;
+    text-shadow: 
+        1px 1px 0 var(--orange-clair),
+        2px 2px 0 var(--orange-terre);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+/* Welcome Section with Lana */
+.welcome-section {
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+}
+
+.welcome-frame {
+    background: var(--creme);
+    border: 4px solid var(--brique);
+    box-shadow: 
+        4px 4px 0px var(--orange-terre),
+        8px 8px 0px var(--brique);
+    padding: 2rem;
+    margin: 0 auto;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+.lana-container {
+    flex-shrink: 0;
+}
+
+.lana-gif {
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    /*border: 3px solid var(--orange-terre);
+    box-shadow: 3px 3px 0px var(--brique);*/
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+.message-container {
+    flex: 1;
+    position: relative;
+}
+
+.typing-message {
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    font-size: 1.1rem;
+    color: var(--brique);
+    line-height: 1.4;
+    margin: 0;
+    min-height: 3rem;
+}
+
+.cursor {
+    color: var(--brique);
+    font-weight: bold;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+/* Footer Styles */
+.footer {
+    margin-top: 4rem;
+    padding: 2rem 0 1rem 0;
+    text-align: center;
+}
+
+.footer-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    padding: 0 2rem;
+}
+
+.footer-line {
+    height: 2px;
+    background: var(--orange-terre);
+    flex: 1;
+    max-width: 150px;
+    box-shadow: 
+        0 1px 0 var(--brique);
+    image-rendering: pixelated;
+}
+
+.footer-ornament {
+    font-size: 1.2rem;
+    margin: 0 1rem;
+    filter: sepia(1) hue-rotate(20deg) saturate(2);
+    animation: steam 3s ease-in-out infinite;
+}
+
+@keyframes steam {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-3px) scale(1.05);
+        opacity: 0.8;
+    }
+}
+
+.footer-content {
+    margin-top: 1rem;
+}
+
+.footer-text {
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    font-size: 1rem;
+    color: var(--brique);
+    margin: 0;
+    text-shadow: 1px 1px 0 var(--orange-clair);
+    letter-spacing: 1px;
+}
+
+.footer-subtitle {
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    font-size: 0.8rem;
+    color: var(--orange-terre);
+    margin: 0.5rem 0 0 0;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* Start Section Styles */
+.start-section {
+    text-align: center;
+    padding: 3rem 0;
+    margin: 2rem 0;
+}
+
+.start-btn {
+    background: var(--orange-terre);
+    border: 4px solid var(--brique);
+    color: var(--creme);
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    font-size: 1.2rem;
+    padding: 1.2rem 2.5rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.1s ease;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 
+        4px 4px 0px var(--orange-clair),
+        8px 8px 0px var(--brique);
+    image-rendering: pixelated;
+}
+
+.start-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 
+        6px 6px 0px var(--orange-clair),
+        10px 10px 0px var(--brique);
+    background: var(--orange-vif);
+}
+
+.start-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 
+        2px 2px 0px var(--orange-clair),
+        4px 4px 0px var(--brique);
+}
+
+/* Responsive Design pour la page d'accueil */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal {
+    background: var(--modal-bg, var(--creme));
+    border: 4px solid var(--modal-border, var(--orange-terre));
+    padding: 2.5rem;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 
+        6px 6px 0px var(--modal-shadow1, var(--orange-clair)),
+        12px 12px 0px var(--modal-shadow2, var(--brique));
+    transform: scale(0.8);
+    transition: all 0.2s ease;
+    position: relative;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+.modal::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    /*border: 2px dashed var(--modal-border-dashed, var(--orange-clair));*/
+    pointer-events: none;
+}
+
+.modal-overlay.active .modal {
+    transform: scale(1);
+}
+
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: var(--modal-close-bg, var(--orange-terre));
+    border: 2px solid var(--modal-close-border, var(--brique));
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--modal-close-text, var(--creme));
+    transition: all 0.1s ease;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    font-weight: bold;
+}
+
+.close-btn:hover {
+    background: var(--modal-close-hover, var(--brique));
+    transform: translate(-1px, -1px);
+    box-shadow: 2px 2px 0px var(--modal-shadow1, var(--orange-clair));
+}
+
+.close-btn:active {
+    transform: translate(1px, 1px);
+    box-shadow: none;
+}
+
+.modal h2 {
+    color: var(--modal-title, var(--brique));
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px var(--modal-title-shadow, var(--orange-clair));
+}
+
+.recipe-section {
+    margin-bottom: 1.5rem;
+}
+
+.recipe-section h3 {
+    color: var(--modal-subtitle, var(--orange-terre));
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.recipe-details {
+    background: var(--modal-details-bg, var(--creme-clair));
+    border: 2px solid var(--modal-details-border, var(--orange-clair));
+    padding: 1rem;
+    margin-bottom: 1rem;
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    color: var(--modal-details-text, var(--brique));
+}
+
+.recipe-details p {
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.recipe-details strong {
+    color: var(--modal-details-bold, var(--orange-terre));
+}
+
+/* Timer Styles */
+.timer-section {
+    background: var(--modal-timer-bg, var(--orange-terre));
+    border: 3px solid var(--modal-timer-border, var(--brique));
+    color: var(--modal-timer-text, var(--creme));
+    padding: 1.5rem;
+    text-align: center;
+    margin-top: 1.5rem;
+    box-shadow: 3px 3px 0px var(--modal-timer-shadow, var(--brique));
+}
+
+.timer-section h3 {
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.8rem;
+    font-size: 0.8rem;
+}
+
+.timer-display {
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 0.8rem 0;
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    text-shadow: 2px 2px 0px var(--modal-timer-display-shadow, var(--brique));
+    background: var(--modal-timer-display-bg, var(--creme));
+    color: var(--modal-timer-display-text, var(--brique));
+    padding: 0.4rem 0.8rem;
+    border: 2px solid var(--modal-timer-display-border, var(--brique));
+    display: inline-block;
+}
+
+.timer-controls {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.timer-btn {
+    background: var(--modal-btn-bg, var(--creme));
+    border: 2px solid var(--modal-btn-border, var(--brique));
+    color: var(--modal-btn-text, var(--brique));
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    font-size: 0.9rem;
+    font-weight: bold;
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.timer-btn:hover {
+    background: var(--modal-btn-hover, var(--orange-clair));
+    transform: translate(-1px, -1px);
+    box-shadow: 2px 2px 0px var(--modal-btn-shadow, var(--brique));
+}
+
+.timer-btn:active {
+    transform: translate(1px, 1px);
+    box-shadow: none;
+}
+
+.timer-btn.start {
+    background: var(--modal-btn-start, #4CAF50);
+    border-color: var(--modal-btn-start-border, #388E3C);
+    color: var(--creme);
+}
+
+.timer-btn.pause {
+    background: var(--modal-btn-pause, #FF9800);
+    border-color: var(--modal-btn-pause-border, #F57C00);
+    color: var(--creme);
+}
+
+.timer-btn.reset {
+    background: var(--modal-btn-reset, #F44336);
+    border-color: var(--modal-btn-reset-border, #D32F2F);
+    color: var(--creme);
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: #8b7355;
+    font-style: italic;
+}
+
+.error {
+    text-align: center;
+    padding: 2rem;
+    color: #d32f2f;
+    background: rgba(255, 235, 238, 0.8);
+    border-radius: 12px;
+    margin: 1rem 0;
+}
+
+/* Start Section Styles */
+.start-section {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1rem 2rem;
+    /*background: var(--creme-clair);
+    border: 4px solid var(--brique);
+    box-shadow: 
+        4px 4px 0px var(--orange-clair),
+        8px 8px 0px var(--orange-terre);
+    position: relative;
+    image-rendering: pixelated;*/
+}
+
+.start-section::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 2px dashed var(--orange-clair);
+    pointer-events: none;
+}
+
+.start-btn {
+    background: var(--orange-vif);
+    border: 4px solid var(--brique);
+    color: var(--creme);
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    font-size: 1.3rem;
+    padding: 1.2rem 2.5rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.1s ease;
+    margin-bottom: 1rem;
+    box-shadow: 4px 4px 0px var(--brique);
+    image-rendering: pixelated;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.start-btn:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 7px 7px 0px var(--brique);
+    background: var(--orange-terre);
+}
+
+.start-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--brique);
+}
+
+.start-subtitle {
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    color: var(--brique);
+    font-size: 1rem;
+    margin-top: 1rem;
+    line-height: 1.4;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Back Navigation for Gallery */
+.back-navigation {
+    margin-bottom: 2rem;
+}
+
+.back-btn {
+    background: var(--orange-terre);
+    border: 3px solid var(--brique);
+    color: var(--creme);
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.1s ease;
+    box-shadow: 3px 3px 0px var(--brique);
+    image-rendering: pixelated;
+}
+
+.back-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--brique);
+}
+
+.back-btn:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px var(--brique);
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .tea-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal {
+        padding: 2rem;
+        margin: 1rem;
+    }
+    
+    .timer-display {
+        font-size: 2.5rem;
+    }
+    
+    .timer-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Ajustement responsive pour les décorations du titre */
+    .section-title {
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+    }
+    
+    .section-title::before {
+        left: -60px;
+    }
+    
+    .section-title::after {
+        right: -60px;
+    }
+    
+    /* Ajustement responsive pour la barre de séparation */
+    .header-separator {
+        margin: 1.5rem 0;
+        padding: 0 1rem;
+    }
+    
+    .separator-ornament {
+        font-size: 1.2rem;
+        margin: 0 1rem;
+    }
+    
+    .separator-line {
+        max-width: 150px;
+    }
+    
+    /* Ajustement responsive pour la section de bienvenue */
+    .welcome-frame {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+    
+    .lana-gif {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .typing-message {
+        font-size: 1rem;
+    }
+    
+    /* Ajustement responsive pour le footer */
+    .footer {
+        margin-top: 3rem;
+        padding: 1.5rem 0 1rem 0;
+    }
+    
+    .footer-separator {
+        padding: 0 1rem;
+    }
+    
+    .footer-line {
+        max-width: 120px;
+    }
+    
+    .footer-ornament {
+        font-size: 1rem;
+    }
+    
+    .footer-text {
+        font-size: 0.9rem;
+    }
+    
+    .footer-subtitle {
+        font-size: 0.7rem;
+    }
+}
+
+/* Media query pour très petits écrans */
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+    
+    .section-title::before,
+    .section-title::after {
+        content: '◆◆';
+        font-size: 0.8rem;
+    }
+    
+    .section-title::before {
+        left: -40px;
+    }
+    
+    .section-title::after {
+        right: -40px;
+    }
+    
+    /* Ajustement responsive pour très petits écrans - barre de séparation */
+    .header-separator {
+        margin: 1rem 0;
+        padding: 0 0.5rem;
+    }
+    
+    .separator-ornament {
+        font-size: 1rem;
+        margin: 0 0.8rem;
+    }
+    
+    .separator-line {
+        max-width: 100px;
+        height: 2px;
+    }
+    
+    /* Ajustement responsive pour très petits écrans - section de bienvenue */
+    .welcome-frame {
+        padding: 1rem;
+        gap: 1rem;
+        margin: 0 1rem;
+    }
+    
+    .lana-gif {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .typing-message {
+        font-size: 0.9rem;
+    }
+    
+    /* Ajustement responsive pour très petits écrans - footer */
+    .footer {
+        margin-top: 2rem;
+        padding: 1rem 0 0.5rem 0;
+    }
+    
+    .footer-separator {
+        padding: 0 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .footer-line {
+        max-width: 80px;
+        height: 1px;
+    }
+    
+    .footer-ornament {
+        font-size: 0.9rem;
+        margin: 0 0.8rem;
+    }
+    
+    .footer-text {
+        font-size: 0.8rem;
+    }
+    
+    .footer-subtitle {
+        font-size: 0.6rem;
+    }
+}
+
+/* Media query pour écrans moyens */
+@media (max-width: 992px) and (min-width: 769px) {
+    .section-title::before {
+        left: -70px;
+    }
+    
+    .section-title::after {
+        right: -70px;
+    }
+}

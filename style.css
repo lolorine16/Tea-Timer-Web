@@ -1,37 +1,25 @@
+/* Tea Timer Web App - Index Page Styles */
+/* Styles spécifiques à la page d'accueil (index.html) */
+
+/* Variables CSS de base */
+:root {
+    --creme: #f0f5dc;
+    --creme-clair: #f5f8e8;
+    --orange-terre: #d87f5c;
+    --orange-clair: #f0b886;
+    --orange-vif: #f0933b;
+    --brique: #8b3e34;
+}
+
+/* Import de la police VCR OSD Mono */
 @font-face {
     font-family: 'VCR OSD Mono';
     src: url('./assets/fonts/VCR_OSD_Mono.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
-:root {
-    --tea-timer: #A8AF71;
-    /* Noir et gris-bleutés */
-    --noir-bleute: #180c10;
-    --gris-bleu-fonce: #304249;
-    --gris-bleu: #798890;
-    --gris-bleu-clair: #abcbc4;
-    
-    /* Bleus et violets */
-    --bleu-vif: #43abc7;
-    --bleu-fonce: #20488c;
-    --violet: #8174e8;
-    --rose-mauve: #e7aac7;
-    
-    /* Crèmes et oranges */
-    --creme: #f0f5dc;
-    --creme-clair: #ffeede;
-    --orange-clair: #f0b886;
-    --orange-terre: #d87f5c;
-    --brique: #8b3e34;
-    
-    /* Couleurs vives */
-    --orange-vif: #f0933b;
-    --jaune: #f1cc46;
-    --vert-pomme: #89ab3e;
-    --vert-sapin: #306645;
-}
 
+/* Reset et styles de base */
 * {
     margin: 0;
     padding: 0;
@@ -40,200 +28,229 @@
 
 body {
     font-family: 'VCR OSD Mono', 'Courier New', monospace;
-    background: linear-gradient(135deg, var(--creme) 0%, var(--creme-clair) 100%);
-    min-height: 100vh;
-    color: #5d4e37;
+    background-color: var(--creme);
+    color: var(--brique);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
+/* Container principal */
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
 }
 
+/* Header Styles */
 header {
     text-align: center;
-    margin-bottom: 3rem;
+    padding: 2rem 0 1rem 0;
+    position: relative;
+    z-index: 2;
 }
 
 h1 {
     font-size: 3rem;
-    color: var(--tea-timer);
-    margin-bottom: 0.5rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    color: var(--brique);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 3px 3px 0px var(--orange-clair);
+    margin-bottom: 1rem;
     font-family: 'VCR OSD Mono', 'Courier New', monospace;
 }
 
 .subtitle {
     font-size: 1.2rem;
-    color: #8b7355;
-    font-style: italic;
+    color: var(--orange-terre);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
 }
 
-/* Header Separator */
-.header-separator {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 2rem 0;
-    padding: 0 2rem;
+/* Barre de séparation pixel art */
+.separator {
+    margin: 2rem auto;
+    text-align: center;
+    position: relative;
 }
 
 .separator-line {
-    height: 3px;
-    background: var(--orange-terre);
-    flex: 1;
-    max-width: 200px;
-    box-shadow: 
-        0 1px 0 var(--brique),
-        0 2px 0 var(--orange-clair);
-    image-rendering: pixelated;
+    height: 4px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        var(--orange-clair) 10%,
+        var(--orange-terre) 50%,
+        var(--orange-clair) 90%,
+        transparent 100%
+    );
+    position: relative;
 }
 
 .separator-ornament {
-    font-family: 'VCR OSD Mono', 'Courier New', monospace;
-    font-size: 1.5rem;
-    color: var(--brique);
-    margin: 0 1.5rem;
-    text-shadow: 
-        1px 1px 0 var(--orange-clair),
-        2px 2px 0 var(--orange-terre);
-    animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(1.1);
-        opacity: 0.8;
-    }
-}
-
-/* Welcome Section with Lana */
-.welcome-section {
-    margin-bottom: 3rem;
-    padding: 2rem 0;
-}
-
-.welcome-frame {
+    display: inline-block;
     background: var(--creme);
-    border: 4px solid var(--brique);
-    box-shadow: 
-        4px 4px 0px var(--orange-terre),
-        8px 8px 0px var(--brique);
-    padding: 2rem;
-    margin: 0 auto;
-    max-width: 600px;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    image-rendering: pixelated;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: crisp-edges;
+    color: var(--orange-terre);
+    font-size: 1.5rem;
+    padding: 0 1rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 1px 1px 0px var(--brique);
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+}
+
+/* Section d'accueil avec Lana */
+.welcome-section {
+    text-align: center;
+    padding: 3rem 0;
+    margin-bottom: 2rem;
+    display: none;
 }
 
 .lana-container {
-    flex-shrink: 0;
+    margin-bottom: 2rem;
 }
 
 .lana-gif {
     width: 150px;
-    height: 200px;
-    object-fit: cover;
-    /*border: 3px solid var(--orange-terre);
-    box-shadow: 3px 3px 0px var(--brique);*/
+    height: 150px;
+    margin: 0 auto 1.5rem auto;
+    display: block;
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
 }
 
-.message-container {
-    flex: 1;
+.lana-message {
+    background: var(--creme-clair);
+    border: 3px solid var(--orange-terre);
+    padding: 1.5rem;
+    margin: 0 auto;
+    max-width: 600px;
     position: relative;
+    box-shadow: 
+        4px 4px 0px var(--orange-clair),
+        8px 8px 0px var(--brique);
+    image-rendering: pixelated;
 }
 
-.typing-message {
+.lana-message::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 2px dashed var(--orange-clair);
+    pointer-events: none;
+}
+
+.lana-text {
     font-family: 'VCR OSD Mono', 'Courier New', monospace;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--brique);
-    line-height: 1.4;
-    margin: 0;
-    min-height: 3rem;
+    line-height: 1.6;
+    letter-spacing: 1px;
 }
 
-.cursor {
-    color: var(--brique);
-    font-weight: bold;
-    animation: blink 1s infinite;
+/* Start Section Styles */
+.start-section {
+    text-align: center;
+    padding: 3rem 0;
+    margin: 2rem 0;
 }
 
-@keyframes blink {
-    0%, 50% {
-        opacity: 1;
-    }
-    51%, 100% {
-        opacity: 0;
-    }
+.start-btn {
+    background: var(--orange-terre);
+    border: 4px solid var(--brique);
+    color: var(--creme);
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    font-size: 1.2rem;
+    padding: 1.2rem 2.5rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.1s ease;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 
+        4px 4px 0px var(--orange-clair),
+        8px 8px 0px var(--brique);
+    image-rendering: pixelated;
+}
+
+.start-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 
+        6px 6px 0px var(--orange-clair),
+        10px 10px 0px var(--brique);
+    background: var(--orange-vif);
+}
+
+.start-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 
+        2px 2px 0px var(--orange-clair),
+        4px 4px 0px var(--brique);
 }
 
 /* Footer Styles */
 .footer {
     margin-top: 4rem;
-    padding: 2rem 0 1rem 0;
+    padding: 2rem 0;
     text-align: center;
+    position: relative;
 }
 
 .footer-separator {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-    padding: 0 2rem;
+    margin: 2rem 0 1.5rem 0;
+    position: relative;
+    height: 4px;
 }
 
 .footer-line {
-    height: 2px;
-    background: var(--orange-terre);
-    flex: 1;
-    max-width: 150px;
-    box-shadow: 
-        0 1px 0 var(--brique);
-    image-rendering: pixelated;
+    height: 4px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        var(--orange-clair) 10%,
+        var(--orange-terre) 50%,
+        var(--orange-clair) 90%,
+        transparent 100%
+    );
 }
 
 .footer-ornament {
+    display: inline-block;
+    background: var(--creme);
+    color: var(--orange-terre);
     font-size: 1.2rem;
-    margin: 0 1rem;
-    filter: sepia(1) hue-rotate(20deg) saturate(2);
-    animation: steam 3s ease-in-out infinite;
-}
-
-@keyframes steam {
-    0%, 100% {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: translateY(-3px) scale(1.05);
-        opacity: 0.8;
-    }
+    padding: 0 1rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 1px 1px 0px var(--brique);
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
 }
 
 .footer-content {
-    margin-top: 1rem;
+    position: relative;
+    z-index: 2;
 }
 
 .footer-text {
     font-family: 'VCR OSD Mono', 'Courier New', monospace;
     font-size: 1rem;
     color: var(--brique);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 0px var(--orange-clair);
     margin: 0;
-    text-shadow: 1px 1px 0 var(--orange-clair);
-    letter-spacing: 1px;
 }
 
 .footer-subtitle {
@@ -245,612 +262,79 @@ h1 {
     opacity: 0.9;
 }
 
-/* Recipe Carousel Styles */
-.recipes-carousel {
-    margin-bottom: 3rem;
-    background: transparent;
-    padding: 2rem 0;
-    position: relative;
-}
-
-.carousel-title {
+/* Loading Styles */
+#loading {
+    text-align: center;
+    padding: 3rem;
     font-family: 'VCR OSD Mono', 'Courier New', monospace;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: var(--brique);
     text-transform: uppercase;
     letter-spacing: 2px;
-    text-shadow: 2px 2px 0px var(--orange-clair);
-    margin-bottom: 2rem;
-    text-align: center;
 }
 
-.carousel-container {
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-}
-
-.carousel-container::-webkit-scrollbar {
-    display: none; /* Masquer la scrollbar */
-}
-
-.carousel-track {
-    display: flex;
-    gap: 1.5rem;
-    padding: 0;
-    min-width: min-content;
-    animation: scrollCarousel 30s linear infinite;
-}
-
-/* Pause l'animation au survol du carrousel */
-.carousel-container:hover .carousel-track {
-    animation-play-state: paused;
-}
-
-/* Animation de défilement automatique */
-@keyframes scrollCarousel {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%); /* Défile de la moitié car on duplique les images */
-    }
-}
-
-.recipe-image {
-    width: 120px; /* Taille augmentée */
-    height: 120px; /* Taille augmentée */
-    object-fit: cover;
-    border: none; /* Suppression des bordures */
-    box-shadow: none; /* Suppression de l'ombre */
-    image-rendering: pixelated;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: crisp-edges;
-    transition: all 0.2s ease;
-    cursor: pointer;
-    flex-shrink: 0;
-    border-radius: 8px; /* Légèrement arrondi pour un look plus moderne */
-}
-
-.recipe-image:hover {
-    transform: scale(1.1); /* Effet zoom au survol */
-    filter: brightness(1.1);
-}
-
-.recipe-image:active {
-    transform: scale(0.95);
-}
-
-/* Gallery Label Styles */
-.gallery-label {
-    margin: 3rem 0 2rem 0;
-    text-align: center;
-}
-
-.section-title {
-    font-family: 'VCR OSD Mono', 'Courier New', monospace;
-    font-size: 2rem;
-    color: var(--brique);
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    text-shadow: 3px 3px 0px var(--orange-clair);
-    margin: 0;
-    position: relative;
-}
-
-.section-title::before,
-.section-title::after {
-    content: '◆◆◆';
-    color: var(--orange-terre);
-    font-size: 1rem;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    text-shadow: 1px 1px 0px var(--brique);
-}
-
-.section-title::before {
-    left: -80px;
-}
-
-.section-title::after {
-    right: -80px;
-}
-
-.tea-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
-}
-
-.tea-card {
-    background: var(--card-bg, var(--creme));
-    border: 3px solid var(--card-border, var(--orange-terre));
-    padding: 1.5rem;
-    box-shadow: 
-        4px 4px 0px var(--card-shadow1, var(--orange-clair)),
-        8px 8px 0px var(--card-shadow2, var(--brique));
-    cursor: pointer;
-    transition: all 0.1s ease;
-    position: relative;
-    image-rendering: pixelated;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: crisp-edges;
-}
-
-.tea-card::before {
-    content: '';
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    right: 3px;
-    bottom: 3px;
-    border: 2px dashed var(--card-border-dashed, var(--orange-clair));
-    pointer-events: none;
-}
-
-.tea-card:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 
-        6px 6px 0px var(--card-shadow1, var(--orange-clair)),
-        10px 10px 0px var(--card-shadow2, var(--brique));
-    background: var(--card-bg-hover, var(--creme-clair));
-}
-
-.tea-card:active {
-    transform: translate(2px, 2px);
-    box-shadow: 
-        2px 2px 0px var(--card-shadow1, var(--orange-clair)),
-        4px 4px 0px var(--card-shadow2, var(--brique));
-}
-
-.tea-image {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    margin-bottom: 1rem;
-    image-rendering: pixelated;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: crisp-edges;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.tea-name {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--card-title, var(--brique));
-    margin-bottom: 0.5rem;
-    font-family: 'VCR OSD Mono', 'Courier New', monospace;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 0px var(--card-title-shadow, var(--orange-clair));
-}
-
-.tea-preview {
-    color: var(--card-description, var(--orange-terre));
-    font-size: 0.9rem;
-    opacity: 1;
-    line-height: 1.4;
-    font-family: 'VCR OSD Mono', 'Courier New', monospace;
-}
-
-.steeping-time {
-    background: var(--card-badge-bg, var(--orange-vif));
-    color: var(--card-badge-text, var(--creme));
-    padding: 0.4rem 1rem;
-    border: 2px solid var(--card-badge-border, var(--orange-terre));
-    font-size: 0.85rem;
-    font-weight: bold;
-    display: inline-block;
-    margin-top: 0.8rem;
-    box-shadow: 2px 2px 0px var(--card-badge-shadow, var(--brique));
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* Modal Styles */
-.modal-overlay {
+/* Animation Background */
+#falling-leaves {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-}
-
-.modal-overlay.active {
-    display: flex;
-    opacity: 1;
-}
-
-.modal {
-    background: var(--modal-bg, var(--creme));
-    border: 4px solid var(--modal-border, var(--orange-terre));
-    padding: 2.5rem;
-    max-width: 600px;
-    width: 90%;
-    max-height: 80vh;
-    overflow-y: auto;
-    box-shadow: 
-        6px 6px 0px var(--modal-shadow1, var(--orange-clair)),
-        12px 12px 0px var(--modal-shadow2, var(--brique));
-    transform: scale(0.8);
-    transition: all 0.2s ease;
-    position: relative;
-    image-rendering: pixelated;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: crisp-edges;
-}
-
-.modal::before {
-    content: '';
-    position: absolute;
-    top: 4px;
-    left: 4px;
-    right: 4px;
-    bottom: 4px;
-    /*border: 2px dashed var(--modal-border-dashed, var(--orange-clair));*/
+    z-index: 0;
     pointer-events: none;
 }
 
-.modal-overlay.active .modal {
-    transform: scale(1);
-}
-
-.close-btn {
-    position: absolute;
-    top: 1rem;
-    right: 1.5rem;
-    background: var(--modal-close-bg, var(--orange-terre));
-    border: 2px solid var(--modal-close-border, var(--brique));
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--modal-close-text, var(--creme));
-    transition: all 0.1s ease;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'VCR OSD Mono', 'Courier New', monospace;
-    font-weight: bold;
-}
-
-.close-btn:hover {
-    background: var(--modal-close-hover, var(--brique));
-    transform: translate(-1px, -1px);
-    box-shadow: 2px 2px 0px var(--modal-shadow1, var(--orange-clair));
-}
-
-.close-btn:active {
-    transform: translate(1px, 1px);
-    box-shadow: none;
-}
-
-.modal h2 {
-    color: var(--modal-title, var(--brique));
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    font-family: 'VCR OSD Mono', 'Courier New', monospace;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 0px var(--modal-title-shadow, var(--orange-clair));
-}
-
-.recipe-section {
-    margin-bottom: 1.5rem;
-}
-
-.recipe-section h3 {
-    color: var(--modal-subtitle, var(--orange-terre));
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-    font-family: 'VCR OSD Mono', 'Courier New', monospace;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.recipe-details {
-    background: var(--modal-details-bg, var(--creme-clair));
-    border: 2px solid var(--modal-details-border, var(--orange-clair));
-    padding: 1rem;
-    margin-bottom: 1rem;
-    font-family: 'VCR OSD Mono', 'Courier New', monospace;
-    color: var(--modal-details-text, var(--brique));
-}
-
-.recipe-details p {
-    margin-bottom: 0.5rem;
-    line-height: 1.4;
-}
-
-.recipe-details strong {
-    color: var(--modal-details-bold, var(--orange-terre));
-}
-
-/* Timer Styles */
-.timer-section {
-    background: var(--modal-timer-bg, var(--orange-terre));
-    border: 3px solid var(--modal-timer-border, var(--brique));
-    color: var(--modal-timer-text, var(--creme));
-    padding: 1.5rem;
-    text-align: center;
-    margin-top: 1.5rem;
-    box-shadow: 3px 3px 0px var(--modal-timer-shadow, var(--brique));
-}
-
-.timer-section h3 {
-    font-family: 'VCR OSD Mono', 'Courier New', monospace;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 0.8rem;
-    font-size: 0.8rem;
-}
-
-.timer-display {
-    font-size: 2rem;
-    font-weight: normal;
-    margin: 0.8rem 0;
-    font-family: 'VCR OSD Mono', 'Courier New', monospace;
-    text-shadow: 2px 2px 0px var(--modal-timer-display-shadow, var(--brique));
-    background: var(--modal-timer-display-bg, var(--creme));
-    color: var(--modal-timer-display-text, var(--brique));
-    padding: 0.4rem 0.8rem;
-    border: 2px solid var(--modal-timer-display-border, var(--brique));
-    display: inline-block;
-}
-
-.timer-controls {
-    display: flex;
-    gap: 0.8rem;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.timer-btn {
-    background: var(--modal-btn-bg, var(--creme));
-    border: 2px solid var(--modal-btn-border, var(--brique));
-    color: var(--modal-btn-text, var(--brique));
-    padding: 0.6rem 1rem;
-    cursor: pointer;
-    transition: all 0.1s ease;
-    font-size: 0.9rem;
-    font-weight: bold;
-    font-family: 'VCR OSD Mono', 'Courier New', monospace;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.timer-btn:hover {
-    background: var(--modal-btn-hover, var(--orange-clair));
-    transform: translate(-1px, -1px);
-    box-shadow: 2px 2px 0px var(--modal-btn-shadow, var(--brique));
-}
-
-.timer-btn:active {
-    transform: translate(1px, 1px);
-    box-shadow: none;
-}
-
-.timer-btn.start {
-    background: var(--modal-btn-start, #4CAF50);
-    border-color: var(--modal-btn-start-border, #388E3C);
-    color: var(--creme);
-}
-
-.timer-btn.pause {
-    background: var(--modal-btn-pause, #FF9800);
-    border-color: var(--modal-btn-pause-border, #F57C00);
-    color: var(--creme);
-}
-
-.timer-btn.reset {
-    background: var(--modal-btn-reset, #F44336);
-    border-color: var(--modal-btn-reset-border, #D32F2F);
-    color: var(--creme);
-}
-
-.loading {
-    text-align: center;
-    padding: 2rem;
-    color: #8b7355;
-    font-style: italic;
-}
-
-.error {
-    text-align: center;
-    padding: 2rem;
-    color: #d32f2f;
-    background: rgba(255, 235, 238, 0.8);
-    border-radius: 12px;
-    margin: 1rem 0;
-}
-
-/* Start Section Styles */
-.start-section {
-    text-align: center;
-    margin: 2rem 0;
-    padding: 1rem 2rem;
-    /*background: var(--creme-clair);
-    border: 4px solid var(--brique);
-    box-shadow: 
-        4px 4px 0px var(--orange-clair),
-        8px 8px 0px var(--orange-terre);
-    position: relative;
-    image-rendering: pixelated;*/
-}
-
-.start-section::before {
-    content: '';
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    right: 8px;
-    bottom: 8px;
-    border: 2px dashed var(--orange-clair);
-    pointer-events: none;
-}
-
-.start-btn {
-    background: var(--orange-vif);
-    border: 4px solid var(--brique);
-    color: var(--creme);
-    font-family: 'VCR OSD Mono', 'Courier New', monospace;
-    font-size: 1.3rem;
-    padding: 1.2rem 2.5rem;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: all 0.1s ease;
-    margin-bottom: 1rem;
-    box-shadow: 4px 4px 0px var(--brique);
-    image-rendering: pixelated;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.start-btn:hover {
-    transform: translate(-3px, -3px);
-    box-shadow: 7px 7px 0px var(--brique);
-    background: var(--orange-terre);
-}
-
-.start-btn:active {
-    transform: translate(2px, 2px);
-    box-shadow: 2px 2px 0px var(--brique);
-}
-
-.start-subtitle {
-    font-family: 'VCR OSD Mono', 'Courier New', monospace;
-    color: var(--brique);
-    font-size: 1rem;
-    margin-top: 1rem;
-    line-height: 1.4;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Back Navigation for Gallery */
-.back-navigation {
-    margin-bottom: 2rem;
-}
-
-.back-btn {
-    background: var(--orange-terre);
-    border: 3px solid var(--brique);
-    color: var(--creme);
-    font-family: 'VCR OSD Mono', 'Courier New', monospace;
-    font-size: 1rem;
-    padding: 0.8rem 1.5rem;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.1s ease;
-    box-shadow: 3px 3px 0px var(--brique);
-    image-rendering: pixelated;
-}
-
-.back-btn:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 5px 5px 0px var(--brique);
-}
-
-.back-btn:active {
-    transform: translate(1px, 1px);
-    box-shadow: 1px 1px 0px var(--brique);
-}
-
+/* Responsive Design */
 @media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
     h1 {
         font-size: 2rem;
-    }
-    
-    .tea-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .modal {
-        padding: 2rem;
-        margin: 1rem;
-    }
-    
-    .timer-display {
-        font-size: 2.5rem;
-    }
-    
-    .timer-controls {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    /* Ajustement responsive pour les décorations du titre */
-    .section-title {
-        font-size: 1.5rem;
         letter-spacing: 2px;
     }
     
-    .section-title::before {
-        left: -60px;
+    .subtitle {
+        font-size: 1rem;
     }
     
-    .section-title::after {
-        right: -60px;
+    .lana-gif {
+        width: 120px;
+        height: 120px;
     }
     
-    /* Ajustement responsive pour la barre de séparation */
-    .header-separator {
-        margin: 1.5rem 0;
-        padding: 0 1rem;
+    .lana-message {
+        padding: 1rem;
+        margin: 0 1rem;
+    }
+    
+    .lana-text {
+        font-size: 0.9rem;
+    }
+    
+    .start-btn {
+        font-size: 1rem;
+        padding: 1rem 2rem;
+        width: 100%;
+        max-width: 300px;
     }
     
     .separator-ornament {
         font-size: 1.2rem;
-        margin: 0 1rem;
     }
     
-    .separator-line {
-        max-width: 150px;
-    }
-    
-    /* Ajustement responsive pour la section de bienvenue */
-    .welcome-frame {
-        flex-direction: column;
-        text-align: center;
-        gap: 1.5rem;
-        padding: 1.5rem;
-    }
-    
-    .lana-gif {
-        width: 100px;
-        height: 100px;
-    }
-    
-    .typing-message {
-        font-size: 1rem;
-    }
-    
-    /* Ajustement responsive pour le footer */
     .footer {
-        margin-top: 3rem;
-        padding: 1.5rem 0 1rem 0;
+        margin-top: 2rem;
+        padding: 1.5rem 0;
     }
     
     .footer-separator {
-        padding: 0 1rem;
+        margin: 1.5rem 0 1rem 0;
     }
     
     .footer-line {
-        max-width: 120px;
+        height: 3px;
     }
     
     .footer-ornament {
@@ -866,82 +350,56 @@ h1 {
     }
 }
 
-/* Media query pour très petits écrans */
 @media (max-width: 480px) {
-    .section-title {
-        font-size: 1.2rem;
+    h1 {
+        font-size: 1.5rem;
         letter-spacing: 1px;
     }
     
-    .section-title::before,
-    .section-title::after {
-        content: '◆◆';
-        font-size: 0.8rem;
-    }
-    
-    .section-title::before {
-        left: -40px;
-    }
-    
-    .section-title::after {
-        right: -40px;
-    }
-    
-    /* Ajustement responsive pour très petits écrans - barre de séparation */
-    .header-separator {
-        margin: 1rem 0;
-        padding: 0 0.5rem;
-    }
-    
-    .separator-ornament {
-        font-size: 1rem;
-        margin: 0 0.8rem;
-    }
-    
-    .separator-line {
-        max-width: 100px;
-        height: 2px;
-    }
-    
-    /* Ajustement responsive pour très petits écrans - section de bienvenue */
-    .welcome-frame {
-        padding: 1rem;
-        gap: 1rem;
-        margin: 0 1rem;
+    .subtitle {
+        font-size: 0.9rem;
+        letter-spacing: 1px;
     }
     
     .lana-gif {
-        width: 80px;
-        height: 80px;
+        width: 100px;
+        height: 100px;
     }
     
-    .typing-message {
+    .lana-message {
+        padding: 0.8rem;
+    }
+    
+    .lana-text {
+        font-size: 0.8rem;
+    }
+    
+    .start-btn {
         font-size: 0.9rem;
+        padding: 0.8rem 1.5rem;
     }
     
-    /* Ajustement responsive pour très petits écrans - footer */
     .footer {
-        margin-top: 2rem;
-        padding: 1rem 0 0.5rem 0;
+        margin-top: 1.5rem;
+        padding: 1rem 0;
     }
     
     .footer-separator {
-        padding: 0 0.5rem;
-        margin-bottom: 1rem;
+        margin: 1rem 0 0.8rem 0;
     }
     
     .footer-line {
-        max-width: 80px;
-        height: 1px;
+        height: 2px;
     }
     
     .footer-ornament {
         font-size: 0.9rem;
-        margin: 0 0.8rem;
+        padding: 0 0.8rem;
     }
     
     .footer-text {
         font-size: 0.8rem;
+        letter-spacing: 1px;
     }
     
     .footer-subtitle {
@@ -949,13 +407,13 @@ h1 {
     }
 }
 
-/* Media query pour écrans moyens */
 @media (max-width: 992px) and (min-width: 769px) {
-    .section-title::before {
-        left: -70px;
+    h1 {
+        font-size: 2.5rem;
     }
     
-    .section-title::after {
-        right: -70px;
+    .lana-gif {
+        width: 130px;
+        height: 130px;
     }
 }

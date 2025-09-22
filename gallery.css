@@ -1,0 +1,517 @@
+/* Gallery Page Styles - Tea Timer Web App */
+/* Tous les styles spécifiques à la page gallery.html */
+
+/* Recipe Carousel Styles */
+.recipes-carousel {
+    margin-bottom: 3rem;
+    background: transparent;
+    padding: 2rem 0;
+    position: relative;
+}
+
+.carousel-title {
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    font-size: 1.5rem;
+    color: var(--brique);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px var(--orange-clair);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.carousel-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.carousel-container::-webkit-scrollbar {
+    display: none; /* Masquer la scrollbar */
+}
+
+.carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0;
+    min-width: min-content;
+    animation: scrollCarousel 30s linear infinite;
+}
+
+/* Pause l'animation au survol du carrousel */
+.carousel-container:hover .carousel-track {
+    animation-play-state: paused;
+}
+
+/* Animation de défilement automatique */
+@keyframes scrollCarousel {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* Défile de la moitié car on duplique les images */
+    }
+}
+
+.recipe-image {
+    width: 120px !important; /* Taille augmentée */
+    height: 120px !important; /* Taille augmentée */
+    object-fit: cover;
+    border: none !important; /* Suppression forcée des bordures */
+    box-shadow: none !important; /* Suppression forcée de l'ombre */
+    outline: none !important; /* Suppression de tout contour */
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    flex-shrink: 0;
+    /* border-radius supprimé pour un look complètement carré */
+}
+
+.recipe-image:hover {
+    transform: scale(1.1); /* Effet zoom au survol */
+    filter: brightness(1.1);
+}
+
+.recipe-image:active {
+    transform: scale(0.95);
+}
+
+/* Gallery Label Styles */
+.gallery-label {
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    font-size: 1.8rem;
+    color: var(--brique);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px var(--orange-clair);
+    margin-bottom: 2rem;
+    text-align: center;
+    display: none;
+}
+
+/* Tea Grid Styles */
+.tea-grid {
+    display: none;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.tea-card {
+    background: var(--card-bg, var(--creme));
+    border: 4px solid var(--card-border, var(--orange-terre));
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    box-shadow: 
+        4px 4px 0px var(--card-shadow1, var(--orange-clair)),
+        8px 8px 0px var(--card-shadow2, var(--brique));
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+.tea-card::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 2px dashed var(--card-border-dashed, var(--orange-clair));
+    pointer-events: none;
+}
+
+.tea-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 
+        8px 8px 0px var(--card-shadow1, var(--orange-clair)),
+        12px 12px 0px var(--card-shadow2, var(--brique));
+    background: var(--card-bg-hover, var(--creme-clair));
+}
+
+.tea-card:active {
+    transform: translate(2px, 2px);
+    box-shadow: 
+        2px 2px 0px var(--card-shadow1, var(--orange-clair)),
+        4px 4px 0px var(--card-shadow2, var(--brique));
+}
+
+.tea-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border: 3px solid var(--card-border, var(--orange-terre));
+    margin-bottom: 1rem;
+    box-shadow: 3px 3px 0px var(--card-shadow1, var(--orange-clair));
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+.tea-name {
+    color: var(--card-title, var(--brique));
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 0px var(--card-title-shadow, var(--orange-clair));
+}
+
+.tea-preview {
+    color: var(--card-description, var(--brique));
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+}
+
+.steeping-time {
+    display: inline-block;
+    background: var(--card-badge-bg, var(--orange-terre));
+    color: var(--card-badge-text, var(--creme));
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border: 2px solid var(--card-badge-border, var(--brique));
+    box-shadow: 2px 2px 0px var(--card-badge-shadow, var(--brique));
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    background: var(--modal-bg, var(--creme));
+    border: 4px solid var(--modal-border, var(--orange-terre));
+    padding: 2rem;
+    max-width: 600px;
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 
+        4px 4px 0px var(--modal-shadow1, var(--orange-clair)),
+        8px 8px 0px var(--modal-shadow2, var(--brique));
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    transform: scale(0.8);
+    transition: transform 0.2s ease;
+}
+
+.modal::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 2px dashed var(--modal-border-dashed, var(--orange-clair));
+    pointer-events: none;
+}
+
+.modal-overlay.active .modal {
+    transform: scale(1);
+}
+
+.modal h2 {
+    color: var(--modal-title, var(--brique));
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px var(--modal-title-shadow, var(--orange-clair));
+    text-align: center;
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--modal-close-bg, var(--orange-terre));
+    border: 3px solid var(--modal-close-border, var(--brique));
+    color: var(--modal-close-text, var(--creme));
+    font-size: 1.2rem;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    font-weight: bold;
+    transition: all 0.1s ease;
+    box-shadow: 2px 2px 0px var(--modal-close-border, var(--brique));
+}
+
+.close-modal:hover {
+    background: var(--modal-close-hover, var(--orange-vif));
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px var(--modal-close-border, var(--brique));
+}
+
+.close-modal:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px var(--modal-close-border, var(--brique));
+}
+
+.recipe-section {
+    background: rgba(240, 245, 220, 0.3);
+    border: 2px solid var(--modal-border-dashed, var(--orange-clair));
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.recipe-section h3 {
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    color: var(--modal-title, var(--brique));
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 0px var(--modal-title-shadow, var(--orange-clair));
+}
+
+.recipe-details {
+    background: var(--modal-details-bg, var(--creme-clair));
+    border: 2px solid var(--modal-details-border, var(--orange-clair));
+    padding: 1rem;
+    margin-bottom: 1rem;
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    color: var(--modal-details-text, var(--brique));
+}
+
+.recipe-details p {
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.recipe-details strong {
+    color: var(--modal-details-bold, var(--orange-terre));
+}
+
+/* Timer Section Styles */
+.timer-section {
+    background: rgba(240, 245, 220, 0.3);
+    border: 2px solid var(--modal-border-dashed, var(--orange-clair));
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.timer-section h3 {
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    color: var(--modal-title, var(--brique));
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 0px var(--modal-title-shadow, var(--orange-clair));
+}
+
+.timer-display {
+    background: var(--modal-timer-display-bg, var(--creme));
+    border: 3px solid var(--modal-timer-display-border, var(--brique));
+    color: var(--modal-timer-display-text, var(--brique));
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 1rem;
+    margin: 1rem 0;
+    text-align: center;
+    box-shadow: 3px 3px 0px var(--modal-timer-display-shadow, var(--brique));
+    letter-spacing: 2px;
+}
+
+.timer-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.timer-btn {
+    background: var(--modal-timer-bg, var(--orange-terre));
+    border: 3px solid var(--modal-timer-border, var(--brique));
+    color: var(--modal-timer-text, var(--creme));
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.1s ease;
+    box-shadow: 3px 3px 0px var(--modal-timer-shadow, var(--brique));
+    min-width: 100px;
+}
+
+.timer-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--modal-timer-shadow, var(--brique));
+}
+
+.timer-btn:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px var(--modal-timer-shadow, var(--brique));
+}
+
+.timer-btn.start {
+    background: var(--modal-timer-bg, var(--orange-terre));
+}
+
+.timer-btn.pause {
+    background: var(--modal-btn-bg, var(--creme));
+    color: var(--modal-btn-text, var(--brique));
+    border-color: var(--modal-btn-border, var(--brique));
+}
+
+.timer-btn.reset {
+    background: var(--modal-btn-bg, var(--creme));
+    color: var(--modal-btn-text, var(--brique));
+    border-color: var(--modal-btn-border, var(--brique));
+}
+
+/* Recipe Button Styles */
+.recipe-button {
+    background: var(--modal-badge-bg, var(--orange-terre));
+    border: 3px solid var(--modal-badge-border, var(--brique));
+    color: var(--modal-badge-text, var(--creme));
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.1s ease;
+    margin: 1rem 0.5rem;
+    box-shadow: 3px 3px 0px var(--modal-badge-shadow, var(--brique));
+}
+
+.recipe-button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--modal-badge-shadow, var(--brique));
+}
+
+.recipe-button:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px var(--modal-badge-shadow, var(--brique));
+}
+
+/* Loading Styles */
+#loading {
+    text-align: center;
+    padding: 3rem;
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    font-size: 1.2rem;
+    color: var(--brique);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Gallery Page Responsive */
+@media (max-width: 768px) {
+    .tea-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        padding: 1rem 0;
+    }
+    
+    .tea-card {
+        padding: 1rem;
+    }
+    
+    .tea-image {
+        height: 150px;
+    }
+    
+    .tea-name {
+        font-size: 1.2rem;
+    }
+    
+    .modal {
+        width: 98%;
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .timer-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .timer-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .timer-display {
+        font-size: 1.5rem;
+        padding: 0.8rem;
+    }
+    
+    .gallery-label {
+        font-size: 1.4rem;
+    }
+    
+    .carousel-title {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .tea-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .modal {
+        padding: 1rem;
+    }
+    
+    .modal h2 {
+        font-size: 1.5rem;
+    }
+    
+    .timer-display {
+        font-size: 1.2rem;
+        padding: 0.6rem;
+    }
+    
+    .recipe-section h3 {
+        font-size: 1rem;
+    }
+    
+    .gallery-label {
+        font-size: 1.2rem;
+    }
+    
+    .carousel-title {
+        font-size: 1rem;
+    }
+}
