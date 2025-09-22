@@ -230,8 +230,6 @@
     left: 8px;
     right: 8px;
     bottom: 8px;
-    border: 2px dashed var(--modal-border-dashed, var(--orange-clair));
-    pointer-events: none;
 }
 
 .modal-overlay.active .modal {
@@ -249,7 +247,7 @@
     text-align: center;
 }
 
-.close-modal {
+.close-btn {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -269,13 +267,13 @@
     box-shadow: 2px 2px 0px var(--modal-close-border, var(--brique));
 }
 
-.close-modal:hover {
+.close-btn:hover {
     background: var(--modal-close-hover, var(--orange-vif));
     transform: translate(-1px, -1px);
     box-shadow: 3px 3px 0px var(--modal-close-border, var(--brique));
 }
 
-.close-modal:active {
+.close-btn:active {
     transform: translate(1px, 1px);
     box-shadow: 1px 1px 0px var(--modal-close-border, var(--brique));
 }
