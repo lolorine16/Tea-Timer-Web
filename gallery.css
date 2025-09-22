@@ -78,6 +78,46 @@
     transform: scale(0.95);
 }
 
+/* Back Button Navigation Styles */
+.back-navigation {
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.back-btn {
+    background: var(--orange-terre, #d87f5c);
+    border: 4px solid var(--brique, #8b3e34);
+    color: var(--creme, #f0f5dc);
+    font-family: 'VCR OSD Mono', 'Courier New', monospace;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.1s ease;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 
+        4px 4px 0px var(--orange-clair, #f0b886),
+        8px 8px 0px var(--brique, #8b3e34);
+    image-rendering: pixelated;
+}
+
+.back-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 
+        6px 6px 0px var(--orange-clair, #f0b886),
+        10px 10px 0px var(--brique, #8b3e34);
+    background: var(--orange-vif, #f0933b);
+}
+
+.back-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 
+        2px 2px 0px var(--orange-clair, #f0b886),
+        4px 4px 0px var(--brique, #8b3e34);
+}
+
 /* Gallery Label Styles */
 .gallery-label {
     font-family: 'VCR OSD Mono', 'Courier New', monospace;
@@ -432,6 +472,12 @@
 
 /* Gallery Page Responsive */
 @media (max-width: 768px) {
+    .back-btn {
+        font-size: 0.9rem;
+        padding: 0.7rem 1.2rem;
+        margin-bottom: 1rem;
+    }
+    
     .tea-grid {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 1.5rem;
@@ -481,6 +527,14 @@
 }
 
 @media (max-width: 480px) {
+    .back-btn {
+        font-size: 0.8rem;
+        padding: 0.6rem 1rem;
+        width: 100%;
+        max-width: 200px;
+        text-align: center;
+    }
+    
     .tea-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
